@@ -30,5 +30,12 @@
     "express-generator": "^4.16.0",
     "http-errors": "~1.6.2",
     "morgan": "~1.9.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-plugin-root-import": "^5.1.0",
+    "babel-plugin-transform-html-import-to-string": "0.0.1",
+    "babel-preset-env": "^1.6.1"
   }
 }
