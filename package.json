@@ -1,0 +1,26 @@
+{
+  "name": "nodejs-restful-jsonapi-seed",
+  "version": "0.0.1",
+  "description": "Everything you need to start building a scalable web application.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nuxy/nodejs-restful-jsonapi-seed.git"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "es6",
+    "restful",
+    "jsonapi"
+  ],
+  "author": "Marc S. Brooks <devel@mbrooks.info> (https://mbrooks.info)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nuxy/nodejs-restful-jsonapi-seed/issues"
+  },
+  "homepage": "https://github.com/nuxy/nodejs-restful-jsonapi-seed#readme"
+}
