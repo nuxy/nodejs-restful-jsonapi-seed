@@ -4,6 +4,7 @@
   "description": "Everything you need to start building a scalable web application.",
   "main": "src/app.js",
   "scripts": {
+    "lint": "node_modules/.bin/eslint --ignore-path .gitignore src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
