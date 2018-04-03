@@ -1,9 +1,9 @@
 'use strict';
 
-import cookieParser from 'cookie-parser';
-import express      from 'express';
-import http         from 'http';
-import logger       from 'morgan';
+import config  from 'config';
+import express from 'express';
+import http    from 'http';
+import logger  from 'morgan';
 
 // Local modules.
 import indexRouter from './routes/index';
@@ -14,7 +14,6 @@ app.server = http.createServer(app);
 
 app.disable('x-powered-by');
 
-app.use(cookieParser());
 app.use(logger('dev'));
 
 app.use('/', indexRouter({foo: 'bar'}));
