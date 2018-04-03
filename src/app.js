@@ -1,6 +1,7 @@
 'use strict';
 
 import config  from 'config';
+import cors    from 'cors';
 import express from 'express';
 import http    from 'http';
 import logger  from 'morgan';
@@ -13,6 +14,12 @@ let app = express();
 app.server = http.createServer(app);
 
 app.disable('x-powered-by');
+
+app.use(cors({
+  credentials: true,
+  methods: ['DELETE', 'GET', 'PATCH', 'POST', 'PUT'],
+  optionsSuccessStatus: 200
+}));
 
 app.use(logger('dev'));
 
