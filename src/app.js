@@ -7,7 +7,7 @@ import http    from 'http';
 import logger  from 'morgan';
 
 // Local modules.
-import indexRouter from './routes/index';
+import indexRouter from '~/routes/index';
 
 // Init Express.
 let app = express();
