@@ -16,7 +16,7 @@ app.disable('x-powered-by');
 
 app.use(logger('dev'));
 
-app.use('/', indexRouter({foo: 'bar'}));
+app.use('/', indexRouter({config}));
 
 // Launch server.
 app.server.listen(3000, () => {
