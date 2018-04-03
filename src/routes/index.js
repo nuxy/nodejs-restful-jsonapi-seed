@@ -2,11 +2,15 @@
 
 import {Router} from 'express';
 
-let router = Router();
+/**
+ * @export default
+ */
+export default ({config}) => {
+  let router = Router();
 
-/* GET home page. */
-router.get('/', function(req, res) {
-  res.render('index', {title: 'Express'});
-});
+  router.get('/', function(req, res) {
+    res.render('index', {title: 'Express'});
+  });
 
-export default router;
+  return router;
+};
