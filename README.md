@@ -2,6 +2,8 @@
 
 Everything you need to start building a scalable web application.
 
+This is **currently in development**.  You have been warned.
+
 ## Dependencies
 
 - Node.js
