@@ -23,7 +23,8 @@ app.use(cors({
 
 app.use(logger('dev'));
 
-app.use('/', indexRouter({config}));
+// Enable routes.
+app.use(config.get('router.prefix'), indexRouter({config}));
 
 // Launch server.
 app.server.listen(config.get('server.port'), () => {

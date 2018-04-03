@@ -1,4 +1,7 @@
 {
+  "router": {
+    "prefix": "/"
+  },
   "server": {
     "port": "3000"
   }
