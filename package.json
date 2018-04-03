@@ -5,6 +5,7 @@
   "main": "src/app.js",
   "scripts": {
     "build": "node_modules/.bin/babel src -s -D -d dist --presets env",
+    "deploy": "node_modules/.bin/pm2 start dist/app.js -i max",
     "lint": "node_modules/.bin/eslint --ignore-path .gitignore src",
     "start": "node dist/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -32,6 +33,7 @@
     "express": "~4.16.0",
     "express-generator": "^4.16.0",
     "morgan": "~1.9.0",
+    "pm2": "^2.10.2",
     "resource-router-middleware": "^0.7.0"
   },
   "devDependencies": {
