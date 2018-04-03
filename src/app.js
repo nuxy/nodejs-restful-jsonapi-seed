@@ -19,7 +19,7 @@ app.use(logger('dev'));
 app.use('/', indexRouter({config}));
 
 // Launch server.
-app.server.listen(3000, () => {
+app.server.listen(config.get('server.port'), () => {
   console.log(`Listening on port ${app.server.address().port}`);
 });
 
