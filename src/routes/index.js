@@ -9,7 +9,7 @@ export default ({config}) => {
   let router = Router();
 
   router.get('/', function(req, res) {
-    res.render('index', {title: 'Express'});
+    res.json({title: 'Express'});
   });
 
   return router;
