@@ -8,8 +8,9 @@ import {Router} from 'express';
 export default ({config}) => {
   let router = Router();
 
+  // Send root response.
   router.get('/', function(req, res) {
-    res.json({title: 'Express'});
+    res.status(501).json({});
   });
 
   return router;
