@@ -8,7 +8,7 @@
     "deploy": "node_modules/.bin/pm2 start dist/app.js -i max",
     "lint": "node_modules/.bin/eslint --ignore-path .gitignore src",
     "start": "node dist/app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch": "node_modules/.bin/nodemon -w src --exec \"npm run build ; npm run start\""
   },
   "repository": {
     "type": "git",
@@ -43,6 +43,7 @@
     "babel-plugin-root-import": "^5.1.0",
     "babel-plugin-transform-html-import-to-string": "0.0.1",
     "babel-preset-env": "^1.6.1",
-    "eslint": "^4.19.1"
+    "eslint": "^4.19.1",
+    "nodemon": "^1.17.3"
   }
 }
