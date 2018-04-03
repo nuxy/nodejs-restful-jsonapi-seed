@@ -6,6 +6,7 @@
   "scripts": {
     "build": "node_modules/.bin/babel src -s -D -d dist --presets env",
     "lint": "node_modules/.bin/eslint --ignore-path .gitignore src",
+    "start": "node dist/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
