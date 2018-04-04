@@ -38,6 +38,14 @@ Run [ESLint](https://eslint.org/) on project sources:
 
     $ npm run lint
 
+Generate documentation using [ESDoc](https://esdoc.org):
+
+    $ npm run doc
+
+### Documentation
+
+When the server is running in _development_ mode the documentation can be accessed at: [http://localhost:3000/doc](http://localhost:3000/doc)
+
 ### Node.js style guide
 
 https://github.com/felixge/node-style-guide

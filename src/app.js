@@ -26,6 +26,10 @@ app.use(logger('dev'));
 // Enable routes.
 app.use(config.get('router.prefix'), indexRouter({config}));
 
+if (process.env.NODE_ENV === undefined) {
+  app.use('/doc', express.static('doc'));
+}
+
 // Launch server.
 app.server.listen(config.get('server.port'), () => {
   console.log(`Listening on port ${app.server.address().port}`);
