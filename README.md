@@ -42,13 +42,13 @@ Generate documentation using [ESDoc](https://esdoc.org):
 
     $ npm run doc
 
-### Documentation
+## Documentation
 
 When the server is running in _development_ mode the documentation can be accessed at: [http://localhost:3000/doc](http://localhost:3000/doc)
 
-### Node.js style guide
+## Contributions
 
-https://github.com/felixge/node-style-guide
+If you fix a bug, or have a code you want to contribute, please send a pull-request with your changes. (Note: Before committing your code please ensure that you are following the [Node.js style guide](https://github.com/felixge/node-style-guide))
 
 ## License and Warranty
 
