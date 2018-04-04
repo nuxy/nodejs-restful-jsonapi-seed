@@ -1,5 +1,6 @@
 'use strict';
 
+import bodyParser from 'body-parser';
 import config     from 'config';
 import cors       from 'cors';
 import express    from 'express';
@@ -15,6 +16,10 @@ let app = express();
 app.server = http.createServer(app);
 
 app.disable('x-powered-by');
+
+app.use(bodyParser.json({
+  limit: config.get('server.parser.bodyLimit')
+}));
 
 app.use(cors({
   credentials: true,
