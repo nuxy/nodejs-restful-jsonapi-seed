@@ -1,10 +1,11 @@
 'use strict';
 
-import config  from 'config';
-import cors    from 'cors';
-import express from 'express';
-import http    from 'http';
-import logger  from 'morgan';
+import config     from 'config';
+import cors       from 'cors';
+import express    from 'express';
+import fileUpload from 'express-fileupload';
+import http       from 'http';
+import logger     from 'morgan';
 
 // Local modules.
 import indexRouter from '~/routes/index';
@@ -19,6 +20,14 @@ app.use(cors({
   credentials: true,
   methods: ['DELETE', 'GET', 'PATCH', 'POST', 'PUT'],
   optionsSuccessStatus: 200
+}));
+
+app.use(fileUpload({
+  limits: {
+    abortOnLimit:  config.get('server.uploads.abortOnLimit'),
+    fileSize:      config.get('server.uploads.fileLimit'),
+    safeFileNames: config.get('server.uploads.safeFileNames')
+  }
 }));
 
 app.use(logger('dev'));

@@ -3,6 +3,11 @@
     "prefix": "/"
   },
   "server": {
-    "port": "3000"
+    "port": "3000",
+    "uploads": {
+      "abortOnLimit": "true",
+      "fileLimit": "5242880",
+      "safeFileNames": "true"
+    }
   }
 }
