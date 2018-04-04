@@ -10,13 +10,35 @@ This is **currently in development**.  You have been warned.
 
 ## Installation
 
-This package can be easily installed using [NPM](http://npmjs.com).
+This package can be easily installed using [NPM](https://npmjs.com).
 
     $ npm install nodejs-restful-jsonapi-seed --prefix <path/to/prefix_folder>
 
 ## Developers
 
-### Style guide
+### CLI options
+
+Compile sources (using [Babel](https://babeljs.io)) to a distribution:
+
+    $ npm run build
+
+Launch a _single server_ with compiled distribution:
+
+    $ npm run start
+
+Launch a _server cluster_ with compiled distribution:
+
+    $ npm run deploy
+
+Launch the server (development mode) with [nodemon](https://nodemon.io):
+
+    $ npm run watch
+
+Run [ESLint](https://eslint.org/) on project sources:
+
+    $ npm run lint
+
+### Node.js style guide
 
 https://github.com/felixge/node-style-guide
 
