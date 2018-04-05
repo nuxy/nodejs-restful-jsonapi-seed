@@ -1,4 +1,4 @@
-# Node.js Express restful JSON API seed
+# Node.js Express restful JSON API seed [![Build Status](https://travis-ci.org/nuxy/nodejs-restful-jsonapi-seed.svg?branch=master)](https://travis-ci.org/nuxy/nodejs-restful-jsonapi-seed)
 
 Everything you need to start building a scalable web application.
 
