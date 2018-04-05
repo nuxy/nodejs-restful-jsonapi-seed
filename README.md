@@ -2,10 +2,12 @@
 
 Everything you need to start building a scalable web application.
 
+[![NPM](https://nodei.co/npm/nodejs-restful-jsonapi-seed.png)](https://nodei.co/npm/nodejs-restful-jsonapi-seed)
+
 ## Features
 
 - ECMAScript 2015 (ES6) compatible.
-- RESTful program interface.
+- RESTful application interface.
 - JSON API support.
 - Schema-based validation.
 - Production process manager.
@@ -16,9 +18,9 @@ Everything you need to start building a scalable web application.
 
 ## Installation
 
-This package can be easily installed using [NPM](https://npmjs.com).
+Package dependencies can be easily installed using [NPM](https://npmjs.com).
 
-    $ npm install nodejs-restful-jsonapi-seed --prefix <path/to/prefix_folder>
+    $ npm install
 
 ## Developers
 
