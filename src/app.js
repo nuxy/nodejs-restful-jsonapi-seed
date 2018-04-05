@@ -36,7 +36,14 @@ app.use(fileUpload({
   }
 }));
 
-app.use(logger('dev'));
+// Enable logging.
+switch (process.env.NODE_ENV) {
+  case 'test':
+    break;
+
+  default:
+    app.use(logger('dev'));
+}
 
 // Enable routes.
 app.use(config.get('router.prefix'), indexRouter({config}));

@@ -48,6 +48,10 @@ Run [ESLint](https://eslint.org/) on project sources:
 
     $ npm run lint
 
+Run [Mocha](https://mochajs.org) integration tests:
+
+    $ npm run test
+
 Generate documentation using [ESDoc](https://esdoc.org):
 
     $ npm run doc
