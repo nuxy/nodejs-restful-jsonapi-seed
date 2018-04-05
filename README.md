@@ -2,11 +2,17 @@
 
 Everything you need to start building a scalable web application.
 
-This is **currently in development**.  You have been warned.
+## Features
+
+- ECMAScript 2015 (ES6) compatible.
+- RESTful program interface.
+- JSON API support.
+- Schema-based validation.
+- Production process manager.
 
 ## Dependencies
 
-- Node.js
+- [Node.js](https://nodejs.org)
 
 ## Installation
 
@@ -17,6 +23,10 @@ This package can be easily installed using [NPM](https://npmjs.com).
 ## Developers
 
 ### CLI options
+
+Set your environment. If `NODE_ENV` is not defined, the default config `development` is used.
+
+    $ export NODE_ENV=<production|staging|qa>
 
 Compile sources (using [Babel](https://babeljs.io)) to a distribution:
 
