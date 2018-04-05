@@ -1,0 +1,11 @@
+{ 
+  "server": {
+    "port": "3000",
+    "parser": {
+      "bodyLimit": "102400"
+    },
+    "uploads": {
+      "fileLimit": "5242880"
+    }
+  }
+}
