@@ -5,6 +5,7 @@ import resource from 'resource-router-middleware';
 // Local modules.
 import userResource from '~/resources/examples/User.js';
 import serializer   from '~/serializers/examples/User.js';
+import {validate}   from '~/validators/examples/User.js';
 
 // Example data.
 let users = userResource().getUsers();
@@ -18,6 +19,11 @@ export default ({config}) => resource({
    * Property name to store preloaded entity on `request`.
    */
   id: 'user',
+
+  /**
+   * Enable validation.
+   */
+  middleware: validate,
 
   /**
    * For requests with an `id`, auto-load the entity.
