@@ -18,7 +18,8 @@ app.server = http.createServer(app);
 app.disable('x-powered-by');
 
 app.use(bodyParser.json({
-  limit: config.get('server.parser.bodyLimit')
+  limit: config.get('server.parser.bodyLimit'),
+  type: 'application/vnd.api+json'
 }));
 
 app.use(cors({
