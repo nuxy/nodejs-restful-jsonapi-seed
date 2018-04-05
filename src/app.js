@@ -38,6 +38,12 @@ app.use(fileUpload({
 
 // Enable logging.
 switch (process.env.NODE_ENV) {
+  case 'production':
+  case 'qa':
+  case 'staging':
+    app.use(logger('combined'));
+    break;
+
   case 'test':
     break;
 
