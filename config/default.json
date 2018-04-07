@@ -10,7 +10,7 @@
       "excludePaths": ["/user"],
       "grantsObject": {
         "admin": {
-          "user": {
+          "/user": {
             "create:any": ["*"],
             "read:any": ["*"],
             "update:any": ["*"],

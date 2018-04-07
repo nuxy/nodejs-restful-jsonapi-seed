@@ -11,15 +11,16 @@ import config          from 'config';
  * @export default {Function}
  */
 export default (req, res, next) => {
+  let resource = req.url;
 
-  // Skip routes.
+  // Skip public routes.
   let excludePaths = config.get('router.accessControl.excludePaths');
 
-  if (excludePaths.includes(req.url)) {
+  if (excludePaths.includes(resource)) {
     return next();
   }
 
-  // Check grants.
+  // Check grants exist.
   let grantsObject = config.get('router.accessControl.grantsObject');
 
   if (grantsObject === undefined) {
@@ -30,8 +31,6 @@ export default (req, res, next) => {
 
   // Get role from session store.
   if (req.session) {
-    let resource = req.url.substr(1);
-
     let permission;
 
     // Check permissions.
@@ -58,7 +57,7 @@ export default (req, res, next) => {
     }
 
     if (permission.granted) {
-      next();
+      return next();
     }
   }
 
