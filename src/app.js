@@ -23,8 +23,9 @@ app.use(bodyParser.json({
 }));
 
 app.use(cors({
-  credentials: true,
-  methods: ['DELETE', 'GET', 'PATCH', 'POST', 'PUT'],
+  credentials: config.get('cors.credentials'),
+  methods: config.get('cors.methods'),
+  origin: config.get('cors.origin'),
   optionsSuccessStatus: 200
 }));
 

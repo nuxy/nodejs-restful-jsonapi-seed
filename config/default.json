@@ -1,4 +1,9 @@
 {
+  "cors": {
+    "origin": "*",
+    "methods": ["DELETE", "GET", "PATCH", "POST", "PUT"],
+    "credentials": "false"
+  },
   "router": {
     "prefix": "/"
   },
