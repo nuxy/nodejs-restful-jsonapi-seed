@@ -30,7 +30,7 @@ export default (req, res, next) => {
   let ac = new AccessControl(grantsObject);
 
   // Get role from session store.
-  if (req.session) {
+  if (req.session.role) {
     let permission;
 
     // Check permissions.
