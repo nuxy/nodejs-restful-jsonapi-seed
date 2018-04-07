@@ -7,7 +7,7 @@
   "router": {
     "prefix": "/",
     "accessControl": {
-      "excludePaths": ["/login"],
+      "excludePaths": ["/", "/login"],
       "grantsObject": {
         "admin": {
           "/user": {
