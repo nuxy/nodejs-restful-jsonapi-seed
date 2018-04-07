@@ -3,6 +3,7 @@
 import {Router} from 'express';
 
 // Local modules.
+import accessControlManager  from '~/middleware/AccessControlManager.js';
 import contentNegotiation    from '~/middleware/ContentNegotiation.js';
 import contentTypeHeader     from '~/middleware/ContentTypeHeader.js';
 import sparseFieldsetsParser from '~/middleware/SparseFieldsetsParser.js';
@@ -17,6 +18,7 @@ export default ({config}) => {
   let router = Router();
 
   // Middleware (Order is important).
+  router.use(accessControlManager);
   router.use(contentNegotiation);
   router.use(contentTypeHeader);
   router.use(sparseFieldsetsParser);

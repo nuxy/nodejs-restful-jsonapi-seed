@@ -30,6 +30,7 @@
   },
   "homepage": "https://github.com/nuxy/nodejs-restful-jsonapi-seed#readme",
   "dependencies": {
+    "accesscontrol": "^2.2.1",
     "config": "^1.30.0",
     "cors": "^2.8.4",
     "express": "~4.16.0",

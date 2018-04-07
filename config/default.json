@@ -5,7 +5,20 @@
     "credentials": "false"
   },
   "router": {
-    "prefix": "/"
+    "prefix": "/",
+    "accessControl": {
+      "excludePaths": ["/user"],
+      "grantsObject": {
+        "admin": {
+          "user": {
+            "create:any": ["*"],
+            "read:any": ["*"],
+            "update:any": ["*"],
+            "delete:any": ["*"]
+          }
+        }
+      }
+    }
   },
   "server": {
     "port": "3000",

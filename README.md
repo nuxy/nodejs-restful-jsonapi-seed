@@ -9,6 +9,7 @@ Everything you need to start building a scalable web application.
 - ECMAScript 2015 (ES6) compatible.
 - RESTful application interface.
 - JSON API support.
+- ABAC (Attribute-Based Access Control)
 - Schema-based validation.
 - Production process manager.
 
