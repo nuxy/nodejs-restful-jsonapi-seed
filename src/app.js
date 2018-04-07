@@ -5,11 +5,13 @@ import config     from 'config';
 import cors       from 'cors';
 import express    from 'express';
 import fileUpload from 'express-fileupload';
+import session    from 'express-session';
 import http       from 'http';
 import logger     from 'morgan';
+import uuid       from 'uuid/v4';
 
 // Local modules.
-import indexRouter from '~/routes/index';
+import indexRouter from '~/routes/index.js';
 
 // Init Express.
 let app = express();
@@ -35,6 +37,17 @@ app.use(fileUpload({
     fileSize:      config.get('server.uploads.fileLimit'),
     safeFileNames: config.get('server.uploads.safeFileNames')
   }
+}));
+
+app.use(session({
+  genid: () => uuid4(),
+  secret: config.get('session.secret'),
+  resave: config.get('session.resave'),
+  cookie: {
+    name: config.get('session.cookie.name'),
+    secure: config.get('session.cookie.secure')
+  },
+  saveUninitialized: false
 }));
 
 // Enable logging.

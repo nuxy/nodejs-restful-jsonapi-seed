@@ -7,5 +7,12 @@
     "uploads": {
       "fileLimit": "5242880"
     }
+  },
+  "session": {
+    "secret": "TEMPORARY SECRET",
+    "resave": "false",
+    "cookie": {
+      "secure": "false"
+    }
   }
 }

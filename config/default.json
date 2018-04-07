@@ -7,7 +7,7 @@
   "router": {
     "prefix": "/",
     "accessControl": {
-      "excludePaths": ["/user"],
+      "excludePaths": ["/login"],
       "grantsObject": {
         "admin": {
           "/user": {
@@ -29,6 +29,14 @@
       "abortOnLimit": "true",
       "fileLimit": "5242880",
       "safeFileNames": "true"
+    }
+  },
+  "session": {
+    "secret": "TEMPORARY SECRET",
+    "resave": "false",
+    "cookie": {
+      "name": "ssid",
+      "secure": "false"
     }
   }
 }
