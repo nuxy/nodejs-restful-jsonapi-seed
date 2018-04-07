@@ -19,7 +19,11 @@ Everything you need to start building a scalable web application.
 
 ## Installation
 
-Package dependencies can be easily installed using [NPM](https://npmjs.com).
+Clone the repository, or download the latest [release](https://github.com/nuxy/nodejs-restful-jsonapi-seed/releases).
+
+    $ git clone https://github.com/nuxy/nodejs-restful-jsonapi-seed.git
+
+Install package dependencies using [NPM](https://npmjs.com).
 
     $ npm install
 
