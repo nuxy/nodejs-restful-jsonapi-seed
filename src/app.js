@@ -11,7 +11,8 @@ import logger     from 'morgan';
 import uuid       from 'uuid/v4';
 
 // Local modules.
-import indexRouter from '~/routes/index.js';
+import SessionStore from '~/lib/SessionStore.js';
+import indexRouter  from '~/routes/index.js';
 
 // Init Express.
 let app = express();
@@ -26,8 +27,8 @@ app.use(bodyParser.json({
 
 app.use(cors({
   credentials: config.get('cors.credentials'),
-  methods: config.get('cors.methods'),
-  origin: config.get('cors.origin'),
+  methods:     config.get('cors.methods'),
+  origin:      config.get('cors.origin'),
   optionsSuccessStatus: 200
 }));
 
@@ -40,14 +41,15 @@ app.use(fileUpload({
 }));
 
 app.use(session({
-  genid: () => uuid4(),
+  genid: () => uuid(),
   secret: config.get('session.secret'),
   resave: config.get('session.resave'),
   cookie: {
-    name: config.get('session.cookie.name'),
+    name:   config.get('session.cookie.name'),
     secure: config.get('session.cookie.secure')
   },
-  saveUninitialized: false
+  saveUninitialized: false,
+  store: new SessionStore(session)
 }));
 
 // Enable logging.
