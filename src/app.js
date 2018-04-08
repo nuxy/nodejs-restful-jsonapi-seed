@@ -42,10 +42,10 @@ app.use(fileUpload({
 
 app.use(session({
   genid: () => uuid(),
+  name:   config.get('session.name'),
   secret: config.get('session.secret'),
   resave: config.get('session.resave'),
   cookie: {
-    name:   config.get('session.cookie.name'),
     secure: config.get('session.cookie.secure')
   },
   saveUninitialized: false,
