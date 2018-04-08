@@ -2,7 +2,7 @@
   "cors": {
     "origin": "*",
     "methods": ["DELETE", "GET", "PATCH", "POST", "PUT"],
-    "credentials": "false"
+    "credentials": false
   },
   "router": {
     "prefix": "/",
@@ -21,22 +21,22 @@
     }
   },
   "server": {
-    "port": "3000",
+    "port": 3000,
     "parser": {
-      "bodyLimit": "102400"
+      "bodyLimit": 102400
     },
     "uploads": {
-      "abortOnLimit": "true",
-      "fileLimit": "5242880",
-      "safeFileNames": "true"
+      "abortOnLimit": true,
+      "fileLimit": 5242880,
+      "safeFileNames": true
     }
   },
   "session": {
+    "name": "ssid",
     "secret": "TEMPORARY SECRET",
-    "resave": "false",
+    "resave": false,
     "cookie": {
-      "name": "ssid",
-      "secure": "false"
+      "secure": false
     }
   }
 }
