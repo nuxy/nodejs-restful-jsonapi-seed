@@ -1,11 +1,7 @@
 'use strict';
 
-import app      from '~/app.js';
-import chai     from 'chai';
-import chaiHttp from 'chai-http';
-import shared   from 'mocha-shared';
-
-chai.use(chaiHttp);
+import chai   from 'chai';
+import shared from 'mocha-shared';
 
 /**
  * User service integraton test.
@@ -15,11 +11,13 @@ describe('User', function() {
   /**
    * Include shared behaviors.
    */
+  require('./Login.setup');
   require('./User.setup');
 
   /**
    * Execute before test.
    */
+  shared.setup('LoginSetup');
   shared.setup('UserSetup');
 
   /**
@@ -29,8 +27,7 @@ describe('User', function() {
     it('returns no errors', function(done) {
       this.timeout(1000);
 
-      chai.request(app)
-        .get('/user')
+      this.request.get('/user')
         .end(function(err, res) {
           chai.expect(res.statusCode)        .to.equal(200);
           chai.expect(res.body)              .to.have.a.property('data');
