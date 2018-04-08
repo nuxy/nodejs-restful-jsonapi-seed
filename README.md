@@ -2,7 +2,7 @@
 
 Everything you need to start building a scalable web application.
 
-[![NPM](https://nodei.co/npm/nodejs-restful-jsonapi-seed.png)](https://nodei.co/npm/nodejs-restful-jsonapi-seed)
+![the "seed" app](package.png?raw=true)
 
 ## Features
 
