@@ -9,6 +9,7 @@
     }
   },
   "session": {
+    "name": "ssid",
     "secret": "TEMPORARY SECRET",
     "cookie": {
       "secure": false

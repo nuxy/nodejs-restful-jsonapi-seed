@@ -9,7 +9,8 @@ import contentTypeHeader     from '~/middleware/ContentTypeHeader.js';
 import sparseFieldsetsParser from '~/middleware/SparseFieldsetsParser.js';
 
 // Examples.
-import userRouter from '~/routes/examples/User.js';
+import loginRouter from '~/routes/examples/Login.js';
+import userRouter  from '~/routes/examples/User.js';
 
 /**
  * @export default
@@ -24,7 +25,8 @@ export default ({config}) => {
   router.use(sparseFieldsetsParser);
 
   // Enable routes.
-  router.use('/user', userRouter({config}));
+  router.use('/login', loginRouter({config}));
+  router.use('/user',  userRouter ({config}));
 
   // Send root response.
   router.get('/', function(req, res) {
