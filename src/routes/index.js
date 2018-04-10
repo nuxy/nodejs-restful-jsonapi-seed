@@ -15,7 +15,7 @@ import userRouter  from '~/routes/examples/User.js';
 /**
  * @export default
  */
-export default ({config}) => {
+export default ({config, db}) => {
   let router = Router();
 
   // Middleware (Order is important).
@@ -25,8 +25,8 @@ export default ({config}) => {
   router.use(sparseFieldsetsParser);
 
   // Enable routes.
-  router.use('/login', loginRouter({config}));
-  router.use('/user',  userRouter ({config}));
+  router.use('/login', loginRouter({config, db}));
+  router.use('/user',  userRouter ({config, db}));
 
   // Send root response.
   router.get('/', function(req, res) {

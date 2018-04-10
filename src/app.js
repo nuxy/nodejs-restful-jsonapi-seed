@@ -11,6 +11,7 @@ import logger     from 'morgan';
 import uuid       from 'uuid/v4';
 
 // Local modules.
+import Database     from '~/lib/Database.js';
 import SessionStore from '~/lib/SessionStore.js';
 import indexRouter  from '~/routes/index.js';
 
@@ -67,34 +68,38 @@ switch (process.env.NODE_ENV) {
     app.use(logger('dev'));
 }
 
-// Enable routes.
-app.use(config.get('router.prefix'), indexRouter({config}));
+// Init database (if available).
+Database(db => {
 
-if (process.env.NODE_ENV === undefined) {
-  app.use('/doc', express.static('doc'));
-}
+  // Enable routes.
+  app.use(config.get('router.prefix'), indexRouter({config, db}));
 
-// Launch server.
-app.server.listen(config.get('server.port'), () => {
-  console.log(`Listening on port ${app.server.address().port}`);
-});
-
-// Handle errors.
-app.server.on('error', err => {
-  switch (err.code) {
-    case 'EACCES':
-      console.error('Port requires elevated privileges');
-      process.exit(1);
-      break;
-
-    case 'EADDRINUSE':
-      console.error('Port is already in use');
-      process.exit(1);
-      break;
-
-    default:
-      throw err;
+  if (process.env.NODE_ENV === undefined) {
+    app.use('/doc', express.static('doc'));
   }
+
+  // Launch server.
+  app.server.listen(config.get('server.port'), () => {
+    console.log(`Listening on port ${app.server.address().port}`);
+  });
+
+  // Handle errors.
+  app.server.on('error', err => {
+    switch (err.code) {
+      case 'EACCES':
+        console.error('Port requires elevated privileges');
+        process.exit(1);
+        break;
+
+      case 'EADDRINUSE':
+        console.error('Port is already in use');
+        process.exit(1);
+        break;
+
+      default:
+        throw err;
+    }
+  });
 });
 
 /**

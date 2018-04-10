@@ -13,7 +13,7 @@ let users = userResource().getUsers();
 /**
  * @export default
  */
-export default ({config}) => resource({
+export default ({config, db}) => resource({
 
   /**
    * Property name to store preloaded entity on `request`.

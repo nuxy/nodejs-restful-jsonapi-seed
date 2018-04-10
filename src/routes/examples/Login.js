@@ -8,7 +8,7 @@ import loginResource from '~/resources/examples/Login.js';
 /**
  * @export default
  */
-export default ({config}) => resource({
+export default ({config, db}) => resource({
 
   /**
    * Create a new session.
