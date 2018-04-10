@@ -2,13 +2,13 @@
 
 Everything you need to start building a scalable web application.
 
-![the "seed" app](package.png?raw=true)
+![the "seed" app](https://raw.githubusercontent.com/nuxy/nodejs-restful-jsonapi-seed/master/package.png)
 
 ## Features
 
 - ECMAScript 2015 (ES6) compatible.
 - RESTful application interface.
-- JSON API support.
+- JSON API standard request/responses.
 - ABAC (Attribute-Based Access Control)
 - Database driver support.
 - Session handling using cookies.
