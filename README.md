@@ -65,6 +65,26 @@ Generate documentation using [ESDoc](https://esdoc.org):
 
     $ npm run doc
 
+## Examples
+
+The following [routes](src/routes/examples) have been enabled in the application.  Please refer to each file for implementation details.
+
+### Login
+
+Basic example of how to authenticate using a `POST` request.
+
+http://localhost:3000/login
+
+    $ curl -X POST -i http://localhost:3000/login --data '{ "username": "foo", "password": "bar" }'
+
+### User
+
+Common use case that supports `GET`, `PATCH`, `POST`, `PUT`, and `DELETE` methods.
+
+http://localhost:3000/user
+
+    $ curl -X GET -i http://localhost:3000/user
+
 ## Documentation
 
 When the server is running in _development_ mode the documentation can be accessed at: [http://localhost:3000/doc](http://localhost:3000/doc)
