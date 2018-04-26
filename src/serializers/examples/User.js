@@ -20,7 +20,15 @@ export default {
         'name',
         'age',
         'gender'
-      ]
+      ],
+
+      // @see https://www.npmjs.com/package/jsonapi-serializer#serialization
+      id: 'id',
+
+      keyForAttribute: 'dash-case',
+
+      pluralizeType: true
+
     })).serialize(data);
   }
 };
