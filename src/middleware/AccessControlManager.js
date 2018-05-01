@@ -3,6 +3,9 @@
 import {AccessControl} from 'accesscontrol';
 import config          from 'config';
 
+// Local modules.
+import utils from '~/lib/Utils.js';
+
 /**
  * Middleware to manage access based on ABAC (Attribute-Based Access Control).
  *
@@ -16,7 +19,7 @@ export default (req, res, next) => {
   // Skip public routes.
   let excludePaths = config.get('router.accessControl.excludePaths');
 
-  if (excludePaths.includes(resource)) {
+  if (utils.matches(excludePaths, resource)) {
     return next();
   }
 
