@@ -27,7 +27,12 @@ export default {
 
       keyForAttribute: 'dash-case',
 
-      pluralizeType: true
+      pluralizeType: true,
+
+      transform: function(o) {
+        //o.keyName = parseInt(o.keyName);
+        return o;
+      }
 
     })).serialize(data);
   }
