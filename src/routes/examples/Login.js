@@ -11,6 +11,19 @@ import loginResource from '~/resources/examples/Login.js';
 export default ({config, db}) => resource({
 
   /**
+   * Check for existing session.
+   *
+   * GET /login
+   */
+  index ({session}, res) {
+    if (session) {
+      res.status(200).json({session: true});
+    } else {
+      res.status(403).json({});
+    }
+  },
+
+  /**
    * Create a new session.
    *
    * POST /login
