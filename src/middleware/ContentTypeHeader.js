@@ -8,6 +8,12 @@
  * @export default {Function}
  */
 export default (req, res, next) => {
+
+  // Exclude documentation requests.
+  if (process.env.NODE_ENV === undefined && /^\/doc/.test(req.path)) {
+    return next();
+  }
+
   res.set('Content-Type', 'application/vnd.api+json');
   next();
 };

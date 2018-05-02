@@ -7,7 +7,12 @@
   "router": {
     "prefix": "/",
     "accessControl": {
-      "excludePaths": ["/", "/login", "/wildcard-example/.*"],
+      "excludePaths": [
+        "/",
+        "/doc/.*",
+        "/login",
+        "/wildcard-example/.*"
+      ],
       "grantsObject": {
         "admin": {
           "/user": {
