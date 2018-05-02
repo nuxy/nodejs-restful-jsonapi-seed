@@ -75,7 +75,7 @@ Basic example of how to authenticate using a `POST` request.
 
 http://localhost:3000/login
 
-    $ curl -X POST -i http://localhost:3000/login --data '{ "username": "foo", "password": "bar" }'
+    $ curl -X POST -H 'Content-Type: application/vnd.api+json' -i http://localhost:3000/login --data '{"username": "foo", "password": "bar"}'
 
 ### User
 
@@ -83,7 +83,7 @@ Common use case that supports `GET`, `PATCH`, `POST`, `PUT`, and `DELETE` method
 
 http://localhost:3000/user
 
-    $ curl -X GET -i http://localhost:3000/user
+    $ curl -X GET -H 'Content-Type: application/vnd.api+json' -i http://localhost:3000/user
 
 ## Documentation
 
