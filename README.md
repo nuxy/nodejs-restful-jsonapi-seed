@@ -77,6 +77,12 @@ http://localhost:3000/login
 
     $ curl -X POST -H 'Content-Type: application/vnd.api+json' -i http://localhost:3000/login --data '{"username": "foo", "password": "bar"}'
 
+Basic example of how to check session status using a `GET` request.
+
+http://localhost:3000/login
+
+    $ curl -X GET -H 'Content-Type: application/vnd.api+json' -i http://localhost:3000/login
+
 ### User
 
 Common use case that supports `GET`, `PATCH`, `POST`, `PUT`, and `DELETE` methods.
