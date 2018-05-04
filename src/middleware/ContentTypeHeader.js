@@ -1,5 +1,7 @@
 'use strict';
 
+import config from 'config';
+
 /**
  * Middleware to send JSON API supported Content-Type header.
  *
@@ -14,6 +16,16 @@ export default (req, res, next) => {
     return next();
   }
 
-  res.set('Content-Type', 'application/vnd.api+json');
+  // Skip headers on empty response.
+  if (config.get('server.allowEmptyBody')) {
+    let send = res.send;
+    res.send = function(body) {
+      if (body) {
+        res.set('Content-Type', 'application/vnd.api+json');
+      }
+      send.call(this, body);
+    };
+  }
+
   next();
 };

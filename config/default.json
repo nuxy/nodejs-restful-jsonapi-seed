@@ -34,7 +34,8 @@
       "abortOnLimit": true,
       "fileLimit": 5242880,
       "safeFileNames": true
-    }
+    },
+    "allowEmptyBody": false
   },
   "session": {
     "name": "ssid",
