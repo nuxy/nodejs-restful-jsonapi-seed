@@ -93,7 +93,7 @@ http://localhost:3000/user
 
 ## Documentation
 
-When the server is running in _development_ mode the documentation can be accessed at: [http://localhost:3000/doc](http://localhost:3000/doc)
+When the server is running in _development_ mode generated documentation can be accessed at: [http://localhost:3000/doc](http://localhost:3000/doc)
 
 ## Contributions
 
