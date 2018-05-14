@@ -17,15 +17,13 @@ export default (req, res, next) => {
   }
 
   // Skip headers on empty response.
-  if (config.get('server.allowEmptyBody')) {
-    let send = res.send;
-    res.send = function(body) {
-      if (body) {
-        res.set('Content-Type', 'application/vnd.api+json');
-      }
-      send.call(this, body);
-    };
-  }
+  let send = res.send;
+  res.send = function(body) {
+    if (config.get('server.allowEmptyBody') === false || body) {
+      res.set('Content-Type', 'application/vnd.api+json');
+    }
+    send.call(this, body);
+  };
 
   next();
 };
