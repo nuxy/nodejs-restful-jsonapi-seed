@@ -1,6 +1,6 @@
 {
   "name": "nodejs-restful-jsonapi-seed",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "Everything you need to start building a scalable web application.",
   "main": "src/app.js",
   "scripts": {
@@ -36,30 +36,30 @@
     "express": "~4.16.0",
     "express-fileupload": "^0.4.0",
     "express-session": "^1.15.6",
-    "express-validator": "^5.1.0",
+    "express-validator": "^5.2.0",
     "jsonapi-query-parser": "^1.3.1",
     "jsonapi-serializer": "^3.5.6",
     "memorystore": "^1.6.0",
     "morgan": "~1.9.0",
-    "pm2": "^2.10.2",
+    "pm2": "^2.10.3",
     "resource-router-middleware": "^0.7.0",
     "uuid": "^3.2.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
+    "babel-core": "^6.26.3",
     "babel-plugin-root-import": "^5.1.0",
     "babel-plugin-transform-html-import-to-string": "0.0.1",
-    "babel-preset-env": "^1.6.1",
+    "babel-preset-env": "^1.7.0",
     "chai": "^4.1.2",
     "chai-http": "^4.0.0",
-    "esdoc": "^1.0.4",
+    "esdoc": "^1.1.0",
     "esdoc-node": "^1.0.3",
     "esdoc-standard-plugin": "^1.0.0",
     "eslint": "^4.19.1",
-    "mocha": "^5.0.5",
+    "mocha": "^5.1.1",
     "mocha-shared": "^0.2.0",
-    "nodemon": "^1.17.3"
+    "nodemon": "^1.17.4"
   },
   "engines": {
     "node": ">=6.14.0"
