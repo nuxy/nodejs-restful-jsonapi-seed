@@ -9,7 +9,7 @@
     "doc": "node_modules/.bin/esdoc -c .esdocrc",
     "lint": "node_modules/.bin/eslint --ignore-path .gitignore src test",
     "start": "node dist/app.js",
-    "test": "node_modules/.bin/mocha --require babel-core/register --require test/mocha.env.js --exit",
+    "test": "node_modules/.bin/mocha 'test/**/*.test.js' --require babel-core/register --require test/mocha.env.js --exit",
     "watch": "node_modules/.bin/nodemon -w src --exec \"npm run build ; npm run start\""
   },
   "repository": {
