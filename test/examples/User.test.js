@@ -11,7 +11,7 @@ describe('User', function() {
   /**
    * Include shared behaviors.
    */
-  require('./Login.setup');
+  require('../Login.setup');
   require('./User.setup');
 
   /**
