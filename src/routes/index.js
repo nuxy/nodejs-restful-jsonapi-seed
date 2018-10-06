@@ -16,7 +16,10 @@ import userRouter  from '~/routes/examples/User.js';
  * @export default
  */
 export default ({config, db}) => {
-  let router = Router();
+  let router = Router({
+    caseSensitive: config.get('router.caseSensitive'),
+    strict: config.get('router.strictRouting'),
+  });
 
   // Middleware (Order is important).
   router.use(accessControlManager);

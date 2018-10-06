@@ -6,6 +6,8 @@
   },
   "router": {
     "prefix": "/",
+    "caseSensitive": false,
+    "strictRouting": false,
     "accessControl": {
       "excludePaths": [
         "/",
