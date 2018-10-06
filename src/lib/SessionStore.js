@@ -29,7 +29,7 @@ class SessionStore {
       checkPeriod: 86400000
     });
   }
-};
+}
 
 /**
  * @export default SessionStore

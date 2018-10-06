@@ -84,7 +84,7 @@ export default ({config, db}) => resource({
    */
   modify ({user, body}, res) {
     for (let key in body) {
-      if (key !== 'id') {
+      if (body.hasOwnProperty(key) && key !== 'id') {
         user[key] = body[key];
       }
     }

@@ -20,7 +20,7 @@ export default (req, res, next) => {
   }
 
   // Format and send results.
-  let formatter = ({location, msg, param, value, nestedErrors}) => {
+  let formatter = ({location, msg, param}) => {
     return {
       detail: msg,
       source: {

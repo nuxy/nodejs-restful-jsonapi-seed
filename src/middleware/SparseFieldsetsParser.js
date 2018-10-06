@@ -1,6 +1,6 @@
 'use strict';
 
-import queryParser from 'jsonapi-query-parser';
+import QueryParser from 'jsonapi-query-parser';
 
 /**
  * Middleware to parse JSON API sparse fieldsets.
@@ -11,7 +11,7 @@ import queryParser from 'jsonapi-query-parser';
  */
 export default (req, res, next) => {
   if (Object.keys(req.query).length === 0) {
-    req.query = (new queryParser()).parseRequest(req.url);
+    req.query = (new QueryParser()).parseRequest(req.url);
   }
   next();
 };
