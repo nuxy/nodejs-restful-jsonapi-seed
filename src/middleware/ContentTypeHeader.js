@@ -12,7 +12,7 @@ import config from 'config';
 export default (req, res, next) => {
 
   // Exclude documentation requests.
-  if (process.env.NODE_ENV === undefined && /^\/doc/.test(req.path)) {
+  if (process.env.NODE_ENV === undefined && /^\/ap[ip]-doc/.test(req.path)) {
     return next();
   }
 

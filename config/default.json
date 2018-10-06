@@ -11,7 +11,7 @@
     "accessControl": {
       "excludePaths": [
         "/",
-        "/doc/.*",
+        "/ap[ip]-doc.*",
         "/login",
         "/wildcard-example/.*"
       ],

@@ -15,6 +15,10 @@ import Database     from '~/lib/Database.js';
 import SessionStore from '~/lib/SessionStore.js';
 import indexRouter  from '~/routes/index.js';
 
+// Swagger examples.
+import swaggerUi   from 'swagger-ui-express';
+import swaggerJson from '~/../swagger.json';
+
 // Init Express.
 let app = express();
 app.server = http.createServer(app);
@@ -75,7 +79,8 @@ Database(db => {
   app.use(config.get('router.prefix'), indexRouter({config, db}));
 
   if (process.env.NODE_ENV === undefined) {
-    app.use('/doc', express.static('doc'));
+    app.use('/api-doc/', swaggerUi.serve, swaggerUi.setup(swaggerJson));
+    app.use('/app-doc/', express.static('doc'));
   }
 
   // Launch server.
