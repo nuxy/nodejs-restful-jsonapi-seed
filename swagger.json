@@ -1,0 +1,88 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "0.4.5",
+    "title": "Examples",
+    "description": "Routes that have been enabled in the application."
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/vnd.api+json"
+  ],
+  "produces": [
+    "application/vnd.api+json"
+  ],
+  "paths": {
+    "/login": {
+      "post": {
+        "summary": "Create a new session.",
+        "operationId": "loginPost",
+        "tags": [
+          "Login"
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/LoginPost"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "403": {
+            "description": "Error"
+          }
+        }
+      },
+      "get": {
+        "summary": "Check session status.",
+        "operationId": "loginGet",
+        "tags": [
+          "Login"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/LoginSuccess"
+            }
+          },
+          "403": {
+            "description": "Error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "LoginPost": {
+      "type": "object",
+      "properties": {
+        "username": {
+          "type": "string",
+          "example": "foo"
+        },
+        "password": {
+          "type": "string",
+          "example": "bar"
+        }
+      }
+    },
+    "LoginSuccess": {
+      "type": "object",
+      "properties": {
+        "session": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}
