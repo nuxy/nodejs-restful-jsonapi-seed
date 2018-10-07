@@ -37,4 +37,19 @@ describe('User', function() {
         });
     });
   });
+
+  describe('List one entity', function() {
+    it('returns no errors', function(done) {
+      this.timeout(1000);
+
+      this.request.get('/user/00000000-0000-0000-0000-000000000001')
+        .end(function(err, res) {
+          chai.expect(res.statusCode)     .to.equal(200);
+          chai.expect(res.body)           .to.have.a.property('data');
+          chai.expect(res.body.data)      .to.be.an('object');
+          chai.expect(res.body.data.type) .to.equal('users');
+          done();
+        });
+    });
+  });
 });

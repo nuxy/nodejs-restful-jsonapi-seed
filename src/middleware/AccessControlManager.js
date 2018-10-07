@@ -14,7 +14,7 @@ import utils from '~/lib/Utils.js';
  * @export default {Function}
  */
 export default (req, res, next) => {
-  let resource = req.url;
+  let resource = '/' + req.url.split('/')[1];
 
   // Skip public routes.
   let excludePaths = config.get('router.accessControl.excludePaths');
