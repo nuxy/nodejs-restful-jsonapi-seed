@@ -60,6 +60,46 @@
           }
         }
       }
+    },
+    "/user": {
+      "get": {
+        "summary": "List all entities",
+        "operationId": "userGetAll",
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UserGetAll"
+            }
+          },
+          "403": {
+            "description": "Error"
+          }
+        }
+      }
+    },
+    "/user/00000000-0000-0000-0000-000000000001": {
+      "get": {
+        "summary": "List one entity",
+        "operationId": "userGetOne",
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UserGetOne"
+            }
+          },
+          "403": {
+            "description": "Error"
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -81,6 +121,69 @@
       "properties": {
         "session": {
           "type": "boolean"
+        }
+      }
+    },
+    "UserGetAll": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string"
+              },
+              "id": {
+                "type": "string"
+              },
+              "attributes": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "age": {
+                    "type": "string"
+                  },
+                  "gender": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "UserGetOne": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string"
+            },
+            "id": {
+              "type": "string"
+            },
+            "attributes": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "age": {
+                  "type": "string"
+                },
+                "gender": {
+                  "type": "string"
+                }
+              }
+            }
+          }
         }
       }
     }
