@@ -17,7 +17,7 @@ export default ({config, db}) => resource({
    */
   index ({session}, res) {
     if (session) {
-      res.status(200).json({session: true});
+      res.status(200).json({session: !!session.role});
     } else {
       res.status(403).json({});
     }
