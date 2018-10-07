@@ -14,6 +14,7 @@ Everything you need to start building a scalable web application.
 - Session handling using cookies.
 - Schema-based validation.
 - Production process manager.
+- ESDoc App/Swagger API documentation.
 
 ## Dependencies
 
@@ -65,35 +66,13 @@ Generate documentation using [ESDoc](https://esdoc.org):
 
     $ npm run doc
 
-## Examples
+## API Examples
 
-The following [routes](src/routes/examples) have been enabled in the application.  Please refer to each file for implementation details.
-
-### Login
-
-Basic example of how to authenticate using a `POST` request.
-
-http://localhost:3000/login
-
-    $ curl -X POST -H 'Content-Type: application/vnd.api+json' -i http://localhost:3000/login --data '{"username": "foo", "password": "bar"}'
-
-Basic example of how to check session status using a `GET` request.
-
-http://localhost:3000/login
-
-    $ curl -X GET -H 'Content-Type: application/vnd.api+json' -i http://localhost:3000/login
-
-### User
-
-Common use case that supports `GET`, `PATCH`, `POST`, `PUT`, and `DELETE` methods.
-
-http://localhost:3000/user
-
-    $ curl -X GET -H 'Content-Type: application/vnd.api+json' -i http://localhost:3000/user
+The following [routes](src/routes/examples) have been enabled in the application.  When the server is running in _development_ mode [Swagger](https://swagger.io) generated documentation can be accessed at: [http://localhost:3000/api-doc](http://localhost:3000/api-doc)
 
 ## Documentation
 
-When the server is running in _development_ mode generated documentation can be accessed at: [http://localhost:3000/doc](http://localhost:3000/doc)
+When the server is running in _development_ mode [ESDoc](https://esdoc.org) generated documentation can be accessed at: [http://localhost:3000/app-doc](http://localhost:3000/app-doc)
 
 ## Contributions
 
