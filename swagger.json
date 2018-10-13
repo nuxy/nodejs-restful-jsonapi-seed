@@ -38,7 +38,7 @@
             "description": "Success"
           },
           "403": {
-            "description": "Error"
+            "description": "Forbidden"
           }
         }
       },
@@ -56,7 +56,7 @@
             }
           },
           "403": {
-            "description": "Error"
+            "description": "Forbidden"
           }
         }
       }
@@ -75,8 +75,8 @@
               "$ref": "#/definitions/UserGetAll"
             }
           },
-          "403": {
-            "description": "Error"
+          "401": {
+            "description": "Unauthorized"
           }
         }
       }
@@ -95,8 +95,8 @@
               "$ref": "#/definitions/UserGetOne"
             }
           },
-          "403": {
-            "description": "Error"
+          "401": {
+            "description": "Unauthorized"
           }
         }
       }
