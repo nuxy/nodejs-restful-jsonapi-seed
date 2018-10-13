@@ -37,7 +37,8 @@
       "fileLimit": 5242880,
       "safeFileNames": true
     },
-    "allowEmptyBody": false
+    "allowEmptyBody": false,
+    "xPoweredBy": ""
   },
   "session": {
     "name": "ssid",

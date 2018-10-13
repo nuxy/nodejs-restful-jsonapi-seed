@@ -6,6 +6,7 @@ import {Router} from 'express';
 import accessControlManager  from '~/middleware/AccessControlManager.js';
 import contentNegotiation    from '~/middleware/ContentNegotiation.js';
 import contentTypeHeader     from '~/middleware/ContentTypeHeader.js';
+import poweredByHeader       from '~/middleware/PoweredByHeader.js';
 import sparseFieldsetsParser from '~/middleware/SparseFieldsetsParser.js';
 
 // Examples.
@@ -18,10 +19,11 @@ import userRouter  from '~/routes/examples/User.js';
 export default ({config, db}) => {
   let router = Router({
     caseSensitive: config.get('router.caseSensitive'),
-    strict: config.get('router.strictRouting'),
+    strict:        config.get('router.strictRouting'),
   });
 
   // Middleware (Order is important).
+  router.use(poweredByHeader);
   router.use(accessControlManager);
   router.use(contentNegotiation);
   router.use(contentTypeHeader);

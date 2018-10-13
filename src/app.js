@@ -23,8 +23,6 @@ import swaggerJson from '~/../swagger.json';
 let app = express();
 app.server = http.createServer(app);
 
-app.disable('x-powered-by');
-
 app.use(bodyParser.json({
   limit: config.get('server.parser.bodyLimit'),
   type: 'application/vnd.api+json'
