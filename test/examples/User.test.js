@@ -4,7 +4,7 @@ import chai   from 'chai';
 import shared from 'mocha-shared';
 
 /**
- * User service integraton test.
+ * User service integration test.
  */
 describe('User', function() {
 

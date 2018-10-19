@@ -4,7 +4,7 @@ import chai   from 'chai';
 import shared from 'mocha-shared';
 
 /**
- * Login service integraton test.
+ * Login service integration test.
  */
 describe('Login', function() {
 
