@@ -26,7 +26,7 @@
         ],
         "parameters": [
           {
-            "name": "username",
+            "name": "json",
             "in": "body",
             "schema": {
               "$ref": "#/definitions/LoginPost"
