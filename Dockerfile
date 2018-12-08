@@ -1,15 +1,26 @@
-FROM node:carbon
+FROM node
 
-WORKDIR /opt/app
+ARG NODE_ENV=development
+ENV env $NODE_ENV
 
-COPY package*.json ./
+WORKDIR /app
 
-RUN npm install --no-optional --no-package-lock --no-shrinkwrap
+COPY *.json ./
 
-COPY . .
+RUN npm install --no-optional --no-package-lock --no-shrinkwrap >/dev/null 2>/dev/null
+RUN npm install pm2 >/dev/null 2>/dev/null
 
-RUN npm run build
+RUN mkdir -p config .
+
+COPY config/default.json config
+COPY config/${env}.json config
+
+ADD dist dist
+
+RUN groupadd -r app && useradd -r -g app -m app
+
+USER app
 
 EXPOSE 3000
 
-CMD ["npm", "start"]
+CMD ["npm", "run", "deploy"]

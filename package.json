@@ -5,7 +5,8 @@
   "main": "src/app.js",
   "scripts": {
     "build": "node_modules/.bin/babel src -s -D -d dist --presets env",
-    "deploy": "node_modules/.bin/pm2 start dist/app.js -i max",
+    "deploy": "node_modules/.bin/pm2 start dist/app.js -i max --no-daemon",
+    "docker": "docker build -t app . --build-arg NODE_ENV=${NODE_ENV:-development} --no-cache && docker run -d -p3000:3000 app",
     "doc": "node_modules/.bin/esdoc -c .esdocrc",
     "lint": "node_modules/.bin/eslint --ignore-path .gitignore src test",
     "start": "node dist/app.js",
@@ -21,7 +22,8 @@
     "express",
     "es6",
     "restful",
-    "jsonapi"
+    "jsonapi",
+    "docker"
   ],
   "author": "Marc S. Brooks <devel@mbrooks.info> (https://mbrooks.info)",
   "license": "MIT",

@@ -15,10 +15,12 @@ Everything you need to start building a scalable web application.
 - Schema-based validation.
 - Production process manager.
 - ESDoc App/Swagger API documentation.
+- Deployable as a Docker service.
 
 ## Dependencies
 
 - [Node.js](https://nodejs.org)
+- [Docker](https://docker.com) (optional)
 
 ## Installation
 
@@ -61,6 +63,10 @@ Run [ESLint](https://eslint.org/) on project sources:
 Run [Mocha](https://mochajs.org) integration tests:
 
     $ npm run test
+
+Deploy your application as a [Docker](https://docker.com) service:
+
+    $ npm run docker
 
 Generate documentation using [ESDoc](https://esdoc.org):
 
