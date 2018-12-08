@@ -42,7 +42,7 @@
     "jsonapi-query-parser": "^1.3.1",
     "jsonapi-serializer": "^3.5.6",
     "memorystore": "^1.6.0",
-    "morgan": "~1.9.0",
+    "morgan": "^1.9.1",
     "pm2": "^2.10.3",
     "resource-router-middleware": "^0.7.0",
     "uuid": "^3.2.1"
