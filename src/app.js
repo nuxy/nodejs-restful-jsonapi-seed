@@ -82,8 +82,11 @@ Database(db => {
   }
 
   // Launch server.
-  app.server.listen(config.get('server.port'), config.get('server.name'), () => {
-    console.log(`Listening on port ${app.server.address().port}`);
+  let serverPort = config.get('server.port');
+  let serverName = config.get('server.name');
+
+  app.server.listen(serverPort, serverName, () => {
+    console.log(`Listening to ${serverName} on port ${serverPort}`);
   });
 
   // Handle errors.
