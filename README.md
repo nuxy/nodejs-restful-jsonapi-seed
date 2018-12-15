@@ -70,7 +70,7 @@ Deploy your application as a [Docker](https://docker.com) service:
 
 Generate documentation using [ESDoc](https://esdoc.org):
 
-    $ npm run doc
+    $ npm run gendoc
 
 ## API Examples
 
