@@ -24,6 +24,29 @@ Everything you need to start building a scalable web application.
 
 ## Installation
 
+### seed-cli
+
+Install the command-line utility using [NPM](https://npmjs.com).
+
+    $ npm install -g nodejs-restful-jsonapi-seed
+    $ seed-cli --help
+    
+    Usage: seed-cli [options]
+    
+    Options:
+      --create [project-name]  Create a new seed project
+      --build                  Compile sources (using Babel) to a distribution
+      --start                  Launch a single server from a compiled distribution
+      --deploy                 Launch a server cluster from a compiled distribution
+      --watch                  Launch the server (development mode)
+      --lint                   Run ESLint on project sources
+      --test                   Run Mocha integration tests
+      --docker                 Deploy your application as a Docker service
+      --gendoc                 Generate documentation using ESDoc
+      -h, --help               output usage information
+
+### Manual
+
 Clone the repository, or download the latest [release](https://github.com/nuxy/nodejs-restful-jsonapi-seed/releases).
 
     $ git clone https://github.com/nuxy/nodejs-restful-jsonapi-seed.git
