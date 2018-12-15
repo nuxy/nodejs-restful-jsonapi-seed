@@ -5,6 +5,7 @@
 .gitignore
 .travis.yml
 Dockerfile
+README.md
 config
 config/default.json
 config/development.json
@@ -12,7 +13,6 @@ config/production.json
 config/qa.json
 config/staging.json
 config/test.json
-package.json
 src
 src/app.js
 src/lib/Database.js

@@ -8,13 +8,13 @@ let execSync  = require('child_process').execSync;
 let fs        = require('fs');
 let path      = require('path');
 
-// Get global modules $PATH
+// Get global module $PATH
 let NODE_MODULES = path.dirname(process.env._) + '/../lib/node_modules';
 
 // Process CLI options.
 commander
   .usage('[options]')
-  .option('--create [name]', 'Create a new seed project', /^[\w-]+$/gi)
+  .option('--create [project-name]', 'Create a new seed project', /^[\w-]+$/g)
   .option('--build',  'Compile sources (using Babel) to a distribution')
   .option('--start',  'Launch a single server from a compiled distribution')
   .option('--deploy', 'Launch a server cluster from a compiled distribution')
@@ -31,84 +31,108 @@ switch (true) {
     break;
 
   case !!commander.build:
-    console.log(
-      execSync('npm run build', {
-        stdio: 'inherit'
-      }));
+    execSync('npm run build', {
+      stdio: 'inherit'
+    });
     break;
 
   case !!commander.start:
-    console.log(
-      execSync('npm run start', {
-        stdio: 'inherit'
-      }));
+    execSync('npm run start', {
+      stdio: 'inherit'
+    });
     break;
 
   case !!commander.deploy:
-    console.log(
-      execSync('npm run deploy', {
-        stdio: 'inherit'
-      }));
+    execSync('npm run deploy', {
+      stdio: 'inherit'
+    });
     break;
 
   case !!commander.watch:
-    console.log(
-      execSync('npm run watch', {
-        stdio: 'inherit'
-      }));
+    execSync('npm run watch', {
+      stdio: 'inherit'
+    });
     break;
 
   case !!commander.lint:
-    console.log(
-      execSync('npm run lint', {
-        stdio: 'inherit'
-      }));
+    execSync('npm run lint', {
+      stdio: 'inherit'
+    });
     break;
 
   case !!commander.test:
-    console.log(
-      execSync('npm run test', {
-        stdio: 'inherit'
-      }));
+    execSync('npm run test', {
+      stdio: 'inherit'
+    });
     break;
 
   case !!commander.docker:
-    console.log(
-      execSync('npm run docker', {
-        stdio: 'inherit'
-      }));
+    execSync('npm run docker', {
+      stdio: 'inherit'
+    });
     break;
 
   case !!commander.gendoc:
-    console.log(
-      execSync('npm run gendoc', {
-        stdio: 'inherit'
-      }));
+    execSync('npm run gendoc', {
+      stdio: 'inherit'
+    });
     break;
 
   default:
     commander.outputHelp();
 }
 
-process.exit(0);
-
 /**
- * Create a new project using package sources.
+ * Create a new project using seed sources.
  *
  * @param {String} dirname
  *   Output directory name.
  */
-function createProject(dirname) {
-  let basedir = NODE_MODULES + '/nodejs-restful-jsonapi-seed';
-  let outdir  = process.cwd() + '/' + dirname;
+function createProject(name) {
+  let srcdir = `${NODE_MODULES}/nodejs-restful-jsonapi-seed`;
+
+  let outdir = process.cwd() + '/' + name;
+
+  if (fs.existsSync(outdir)) {
+    console.log(`Cannot create directory \`${name}\`: Project exists`);
+    process.exit(1);
+  }
 
   // Load the package manifest.
-  let sources = fs.readFileSync(`${basedir}/MANIFEST`);
+  let sources = fs.readFileSync(`${srcdir}/MANIFEST`);
 
   // Copy the project sources.
-  copydir.sync(basedir, outdir, function(stat, filepath, filename) {
+  copydir.sync(srcdir, outdir, function (stat, filepath, filename) {
     if (sources.includes(filename)) {
       return true;
     }
   });
+
+  // Create package.json file.
+  let options = JSON.parse(fs.readFileSync(`${srcdir}/package.json`));
+
+  let withProps = [
+    'name',
+    'version',
+    'description',
+    'main',
+    'scripts',
+    'keywords',
+    'author',
+    'dependencies',
+    'devDependencies',
+    'engines'
+  ];
+
+  let pkgOpts = {};
+
+  withProps.forEach(function(prop) {
+    if (options[prop]) {
+      pkgOpts[prop] = options[prop];
+    }
+  });
+
+  fs.writeFileSync(`${outdir}/package.json`, JSON.stringify(pkgOpts, null, 2));
+
+  console.log(`Project \`${name}\` created in:\n  ${outdir}`);
 }
