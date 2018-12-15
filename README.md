@@ -44,11 +44,11 @@ Compile sources (using [Babel](https://babeljs.io)) to a distribution:
 
     $ npm run build
 
-Launch a _single server_ with compiled distribution:
+Launch a _single server_ from a compiled distribution:
 
     $ npm run start
 
-Launch a _server cluster_ with compiled distribution:
+Launch a _server cluster_ from a compiled distribution:
 
     $ npm run deploy
 
