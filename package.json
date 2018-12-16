@@ -71,6 +71,6 @@
     "node": ">=6.14.0"
   },
   "bin": {
-    "seed-cli": "./bin/cli.js"
+    "seed-cli": ".bin/cli.js"
   }
 }
