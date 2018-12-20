@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Middleware to handle JSON API content negotiation responsibilites.
+ * Middleware to handle JSON API content negotiation responsibilities.
  *
  * @see http://jsonapi.org/format/#content-negotiation-clients
  * @see http://jsonapi.org/format/#content-negotiation-servers
