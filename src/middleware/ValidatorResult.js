@@ -14,11 +14,6 @@ import errorHandler from '~/serializers/ErrorHandler.js';
  */
 export default (req, res, next) => {
 
-  // Exclude GET methods.
-  if (req.method === 'GET') {
-    return next();
-  }
-
   // Format and send results.
   let formatter = ({location, msg, param}) => {
     return {
