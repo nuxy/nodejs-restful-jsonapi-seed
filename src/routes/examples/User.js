@@ -7,16 +7,13 @@ import userResource from '~/resources/examples/User.js';
 import serializer   from '~/serializers/examples/User.js';
 import {validate}   from '~/validators/examples/User.js';
 
-// Example data.
-let users = userResource().getUsers();
-
 /**
  * @export default
  */
 export default ({config, db}) => resource({
 
   /**
-   * Property name to store preloaded entity on `request`.
+   * Property name to store preloaded user on `request`.
    */
   id: 'user',
 
@@ -26,37 +23,42 @@ export default ({config, db}) => resource({
   middleware: validate,
 
   /**
-   * For requests with an `id`, auto-load the entity.
+   * For requests with an `id`, auto-load the user.
    */
-  load (req, id, callback) {
-    let user = users.find(user => user.id === id),
+  load ({session}, id, callback) {
+    let user = userResource(session).getUser(id),
         err  = user ? null : {};
 
     callback(err, user);
   },
 
   /**
-   * List all entities.
+   * List all users.
    *
    * GET /user
    */
-  list ({params}, res) {
-    res.status(200).json(serializer.get(users));
+  list ({params, session}, res) {
+    let users = userResource(session).getUsers();
+    if (users) {
+      res.status(200).json(serializer.get(users));
+    } else {
+      res.status(204).send();
+    }
   },
 
   /**
-   * Create a new entity.
+   * Create a new user.
    *
    * POST /user
    */
-  create ({body}, res) {
-    users.push(body);
+  create ({body, session}, res) {
+    let user = userResource(session).createUser(body);
 
-    res.status(201).json(users);
+    res.status(201).json(serializer.get(user));
   },
 
   /**
-   * Return a given entity.
+   * Return a given user.
    *
    * GET /user/:id
    */
@@ -65,41 +67,35 @@ export default ({config, db}) => resource({
   },
 
   /**
-   * Update a given entity.
+   * Update a given user.
    *
    * PUT /user/:id
    */
-  update ({user, body}, res) {
-    if (user.id === body.id) {
-      user = body;
-    }
+  update ({user, body, session}, res) {
+    userResource(session).updateUser(user.id, body);
 
-    res.status(204).json(user);
+    res.status(204).send();
   },
 
   /**
-   * Modify a given entity.
+   * Modify a given user.
    *
    * PATCH /user/:id
    */
-  modify ({user, body}, res) {
-    for (let key in body) {
-      if (body.hasOwnProperty(key) && key !== 'id') {
-        user[key] = body[key];
-      }
-    }
+  modify ({user, body, session}, res) {
+    userResource(session).updateUser(user.id, body);
 
-    res.status(204).json(user);
+    res.status(204).send();
   },
 
   /**
-   * Delete a given entity.
+   * Delete a given user.
    *
    * DELETE /user/:id
    */
-  delete ({user}, res) {
-    users.splice(users.indexOf(user), 1);
+  delete ({user, session}, res) {
+    userResource(session).deleteUser(user.id);
 
-    res.status(204).json(users);
+    res.status(204).send();
   }
 });

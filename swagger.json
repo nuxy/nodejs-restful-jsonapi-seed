@@ -39,6 +39,12 @@
           },
           "403": {
             "description": "Forbidden"
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "schema": {
+              "$ref": "#/definitions/ValidationError"
+            }
           }
         }
       },
@@ -57,13 +63,52 @@
           },
           "403": {
             "description": "Forbidden"
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "schema": {
+              "$ref": "#/definitions/ValidationError"
+            }
           }
         }
       }
     },
     "/user": {
+      "post": {
+        "summary": "Create a new user.",
+        "operationId": "userPost",
+        "tags": [
+          "User"
+        ],
+        "parameters": [
+          {
+            "name": "json",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/UserPost"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/UserGetOne"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "schema": {
+              "$ref": "#/definitions/ValidationError"
+            }
+          }
+        }
+      },
       "get": {
-        "summary": "List all entities",
+        "summary": "List all users.",
         "operationId": "userGetAll",
         "tags": [
           "User"
@@ -83,7 +128,7 @@
     },
     "/user/00000000-0000-0000-0000-000000000001": {
       "get": {
-        "summary": "List one entity",
+        "summary": "List one user.",
         "operationId": "userGetOne",
         "tags": [
           "User"
@@ -97,6 +142,93 @@
           },
           "401": {
             "description": "Unauthorized"
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "schema": {
+              "$ref": "#/definitions/ValidationError"
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "Update a user (property)",
+        "operationId": "userPatch",
+        "tags": [
+          "User"
+        ],
+        "parameters": [
+          {
+            "name": "json",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/UserPatch"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "schema": {
+              "$ref": "#/definitions/ValidationError"
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a user (resource)",
+        "operationId": "userPut",
+        "tags": [
+          "User"
+        ],
+        "parameters": [
+          {
+            "name": "json",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/UserPut"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "schema": {
+              "$ref": "#/definitions/ValidationError"
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a user.",
+        "operationId": "userDelete",
+        "tags": [
+          "User"
+        ],
+        "responses": {
+          "204": {
+            "description": "Success"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "422": {
+            "description": "Unprocessable Entity",
+            "schema": {
+              "$ref": "#/definitions/ValidationError"
+            }
           }
         }
       }
@@ -180,6 +312,79 @@
                 },
                 "gender": {
                   "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "UserPost": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "foo bar"
+        },
+        "age": {
+          "type": "number",
+          "example": 45
+        },
+        "gender": {
+          "type": "string",
+          "example": "Binary"
+        }
+      }
+    },
+    "UserPatch": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "foo bar"
+        },
+        "age": {
+          "type": "number",
+          "example": 45
+        },
+        "gender": {
+          "type": "string",
+          "example": "Binary"
+        }
+      }
+    },
+    "UserPut": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "biz baz"
+        }
+      }
+    },
+    "ValidationError": {
+      "type": "object",
+      "properties": {
+        "errors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string",
+                "example": "Invalid parameter"
+              },
+              "details": {
+                "type": "string",
+                "example": "Allowed values: Numeric characters"
+              },
+              "source": {
+                "type": "object",
+                "properties": {
+                  "param": {
+                    "type": "string",
+                    "example": "age"
+                  }
                 }
               }
             }
