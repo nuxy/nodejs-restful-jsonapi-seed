@@ -3,15 +3,19 @@ import Chance from 'chance';
 /**
  * Provides random data generation methods.
  *
+ * @see http://chancejs.com
+ *
  * @class
  */
 class Random extends Chance {
 
   /**
+   * Override string default options.
+   *
    * @inheritdoc
    */
-  string(length = 8, pool = 'abcdefghijklmnopqrstuvwxyz1234567890') {
-    return super.string({length, pool});
+  string(options = {length: 8, pool: 'abcdefghijklmnopqrstuvwxyz1234567890'}) {
+    return super.string(options);
   }
 }
 
