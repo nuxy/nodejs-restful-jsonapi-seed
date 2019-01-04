@@ -39,8 +39,8 @@ src/validators/examples/Login.js
 src/validators/examples/User.js
 swagger.json
 test
-test/Login.setup.js
-test/Login.test.js
 test/examples/Login.setup.js
+test/examples/Login.test.js
 test/examples/User.setup.js
+test/examples/User.test.js
 test/mocha.env.js
