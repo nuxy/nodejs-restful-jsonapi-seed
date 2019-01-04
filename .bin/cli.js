@@ -31,51 +31,35 @@ switch (true) {
     break;
 
   case !!commander.build:
-    execSync('npm run build', {
-      stdio: 'inherit'
-    });
+    runCommand('build');
     break;
 
   case !!commander.start:
-    execSync('npm run start', {
-      stdio: 'inherit'
-    });
+    runCommand('start');
     break;
 
   case !!commander.deploy:
-    execSync('npm run deploy', {
-      stdio: 'inherit'
-    });
+    runCommand('deploy');
     break;
 
   case !!commander.watch:
-    execSync('npm run watch', {
-      stdio: 'inherit'
-    });
+    runCommand('watch');
     break;
 
   case !!commander.lint:
-    execSync('npm run lint', {
-      stdio: 'inherit'
-    });
+    runCommand('lint');
     break;
 
   case !!commander.test:
-    execSync('npm run test', {
-      stdio: 'inherit'
-    });
+    runCommand('test');
     break;
 
   case !!commander.docker:
-    execSync('npm run docker', {
-      stdio: 'inherit'
-    });
+    runCommand('docker');
     break;
 
   case !!commander.gendoc:
-    execSync('npm run gendoc', {
-      stdio: 'inherit'
-    });
+    runCommand('gendoc');
     break;
 
   default:
@@ -85,7 +69,7 @@ switch (true) {
 /**
  * Create a new project using seed sources.
  *
- * @param {String} dirname
+ * @param {String} name
  *   Output directory name.
  */
 function createProject(name) {
@@ -109,7 +93,7 @@ function createProject(name) {
   });
 
   // Create package.json file.
-  let options = JSON.parse(fs.readFileSync(`${srcdir}/package.json`));
+  let options = getPackageConfig(srcdir);
 
   let withProps = [
     'name',
@@ -135,4 +119,42 @@ function createProject(name) {
   fs.writeFileSync(`${outdir}/package.json`, JSON.stringify(pkgOpts, null, 2));
 
   console.log(`Project \`${name}\` created in:\n  ${outdir}`);
+}
+
+/**
+ * Execute an NPM run-script by name.
+ *
+ * @param {String} name
+ *   NPM command value.
+ */
+function runCommand(name) {
+
+  // Install NPM dependencies (first-run).
+  if (!fs.existsSync('node_modules')) {
+    console.log('Missing package dependencies. Installing...');
+
+    execSync('npm install --silent');
+  }
+
+  // Execute the NPM script.
+  if (getPackageConfig().scripts[name]) {
+    execSync(`npm run ${name}`, {
+      stdio: 'inherit'
+    });
+  } else {
+    console.log(`Cannot run script \`${name}\`: Invalid project`);
+    process.exit(1);
+  }
+}
+
+/**
+ * Return package.json as object for a given path.
+ *
+ * @param {String} path
+ *   Path to file (optional).
+ *
+ * @return {Object}
+ */
+function getPackageConfig(path = '.') {
+  return JSON.parse(fs.readFileSync(`${path}/package.json`).toString());
 }
