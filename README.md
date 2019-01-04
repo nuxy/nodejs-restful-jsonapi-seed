@@ -1,4 +1,6 @@
-# Node.js Express restful JSON API seed [![Build Status](https://travis-ci.org/nuxy/nodejs-restful-jsonapi-seed.svg?branch=master)](https://travis-ci.org/nuxy/nodejs-restful-jsonapi-seed)
+# Node.js Express restful JSON API seed
+
+[![npm version](https://badge.fury.io/js/nodejs-restful-jsonapi-seed.svg)](https://badge.fury.io/js/nodejs-restful-jsonapi-seed) [![](https://img.shields.io/npm/dw/localeval.svg)](https://www.npmjs.com/package/nodejs-restful-jsonapi-seed) [![Build Status](https://travis-ci.org/nuxy/nodejs-restful-jsonapi-seed.svg?branch=master)](https://travis-ci.org/nuxy/nodejs-restful-jsonapi-seed)
 
 Everything you need to start building a scalable web application.
 
@@ -30,9 +32,9 @@ Install the command-line utility using [NPM](https://npmjs.com).
 
     $ npm install -g nodejs-restful-jsonapi-seed
     $ seed-cli --help
-    
+
     Usage: seed-cli [options]
-    
+
     Options:
       --create [project-name]  Create a new seed project
       --build                  Compile sources (using Babel) to a distribution
