@@ -1,6 +1,6 @@
 # Node.js Express restful JSON API seed
 
-[![npm version](https://badge.fury.io/js/nodejs-restful-jsonapi-seed.svg)](https://badge.fury.io/js/nodejs-restful-jsonapi-seed) [![](https://img.shields.io/npm/dw/localeval.svg)](https://www.npmjs.com/package/nodejs-restful-jsonapi-seed) [![Build Status](https://travis-ci.org/nuxy/nodejs-restful-jsonapi-seed.svg?branch=master)](https://travis-ci.org/nuxy/nodejs-restful-jsonapi-seed)
+[![npm version](https://badge.fury.io/js/nodejs-restful-jsonapi-seed.svg)](https://badge.fury.io/js/nodejs-restful-jsonapi-seed) [![](https://img.shields.io/npm/dw/localeval.svg)](https://www.npmjs.com/package/nodejs-restful-jsonapi-seed) [![Build Status](https://travis-ci.org/nuxy/nodejs-restful-jsonapi-seed.svg?branch=master)](https://travis-ci.org/nuxy/nodejs-restful-jsonapi-seed) [![](https://img.shields.io/david/nuxy/nodejs-restful-jsonapi-seed.svg)](https://www.npmjs.com/package/nodejs-restful-jsonapi-seed)
 
 Everything you need to start building a scalable web application.
 
@@ -107,6 +107,10 @@ The following [routes](src/routes/examples) have been enabled in the application
 ## Documentation
 
 When the server is running in _development_ mode [ESDoc](https://esdoc.org) generated documentation can be accessed at: [http://localhost:3000/app-doc](http://localhost:3000/app-doc)
+
+## Windows support
+
+This package has limited support for Windows due to cross-platform compatibility issues, most notably `SHELL` environment differences. Due to this, you can either run this package in [Docker](https://docker.com) or switch to a UNIX-like operating system.
 
 ## Contributions
 
