@@ -36,10 +36,10 @@ Install the command-line utility using [NPM](https://npmjs.com).
     Usage: seed-cli [options]
 
     Options:
-      --create [project-name]  Create a new seed project
-      --build                  Compile sources (using Babel) to a distribution
-      --start                  Launch a single server from a compiled distribution
-      --deploy                 Launch a server cluster from a compiled distribution
+      --create [project-name]  Create a new seed example project
+      --build                  Transpile ES6 sources (using Babel) to a distribution
+      --start                  Launch a single server instance from a transpiled distribution
+      --deploy                 Launch a server cluster from a transpiled distribution
       --watch                  Launch the server (development mode)
       --lint                   Run ESLint on project sources
       --test                   Run Mocha integration tests
@@ -59,21 +59,23 @@ Install package dependencies using [NPM](https://npmjs.com).
 
 ## Developers
 
+While `seed-cli` provided with this package can execute NPM scripts, it's not a requirement. You can also achieve this using [npm-run-script](https://docs.npmjs.com/cli/run-script).
+
 ### CLI options
 
 Set your environment. If `NODE_ENV` is not defined, the default config `development` is used.
 
     $ export NODE_ENV=<production|staging|qa>
 
-Compile sources (using [Babel](https://babeljs.io)) to a distribution:
+Transpile ES6 sources (using [Babel](https://babeljs.io)) to a distribution:
 
     $ npm run build
 
-Launch a _single server_ from a compiled distribution:
+Launch a _single server instance_ from a transpiled distribution:
 
     $ npm run start
 
-Launch a _server cluster_ from a compiled distribution:
+Launch a _server cluster_ from a transpiled distribution:
 
     $ npm run deploy
 

@@ -15,9 +15,9 @@ let NODE_MODULES = path.dirname(process.env._) + '/../lib/node_modules';
 commander
   .usage('[options]')
   .option('--create [project-name]', 'Create a new seed project', /^[\w-]+$/g)
-  .option('--build',  'Compile sources (using Babel) to a distribution')
-  .option('--start',  'Launch a single server from a compiled distribution')
-  .option('--deploy', 'Launch a server cluster from a compiled distribution')
+  .option('--build',  'Transpile ES6 sources (using Babel) to a distribution')
+  .option('--start',  'Launch a single server instance from a transpiled distribution')
+  .option('--deploy', 'Launch a server cluster from a transpiled distribution')
   .option('--watch',  'Launch the server (development mode)')
   .option('--lint',   'Run ESLint on project sources')
   .option('--test',   'Run Mocha integration tests')
