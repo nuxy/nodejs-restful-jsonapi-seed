@@ -36,7 +36,7 @@ Install the command-line utility using [NPM](https://npmjs.com).
     Usage: seed-cli [options]
 
     Options:
-      --create [project-name]  Create a new seed example project
+      --create <project-name>  Create a new seed example project
       --build                  Transpile ES6 sources (using Babel) to a distribution
       --start                  Launch a single server instance from a transpiled distribution
       --deploy                 Launch a server cluster from a transpiled distribution
@@ -45,6 +45,7 @@ Install the command-line utility using [NPM](https://npmjs.com).
       --test                   Run Mocha integration tests
       --docker                 Deploy your application as a Docker service
       --gendoc                 Generate documentation using ESDoc
+      --env <environment>      Set the NODE_ENV (default: development)
       -h, --help               output usage information
 
 ### Manual

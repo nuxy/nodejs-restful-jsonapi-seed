@@ -14,7 +14,7 @@ let NODE_MODULES = path.dirname(process.env._) + '/../lib/node_modules';
 // Process CLI options.
 commander
   .usage('[options]')
-  .option('--create [project-name]', 'Create a new seed project', /^[\w-]+$/g)
+  .option('--create <project-name>', 'Create a new seed project', /^[\w-]+$/g)
   .option('--build',  'Transpile ES6 sources (using Babel) to a distribution')
   .option('--start',  'Launch a single server instance from a transpiled distribution')
   .option('--deploy', 'Launch a server cluster from a transpiled distribution')
@@ -23,42 +23,45 @@ commander
   .option('--test',   'Run Mocha integration tests')
   .option('--docker', 'Deploy your application as a Docker service')
   .option('--gendoc', 'Generate documentation using ESDoc')
+  .option('--env <environment>', 'Set the NODE_ENV (default: development)')
   .parse(process.argv);
 
+process.env.NODE_ENV = commander.env || 'development';
+
 switch (true) {
-  case !!commander.create:
+  case commander.create:
     createProject(commander.create);
     break;
 
-  case !!commander.build:
+  case commander.build:
     runCommand('build');
     break;
 
-  case !!commander.start:
+  case commander.start:
     runCommand('start');
     break;
 
-  case !!commander.deploy:
+  case commander.deploy:
     runCommand('deploy');
     break;
 
-  case !!commander.watch:
+  case commander.watch:
     runCommand('watch');
     break;
 
-  case !!commander.lint:
+  case commander.lint:
     runCommand('lint');
     break;
 
-  case !!commander.test:
+  case commander.test:
     runCommand('test');
     break;
 
-  case !!commander.docker:
+  case commander.docker:
     runCommand('docker');
     break;
 
-  case !!commander.gendoc:
+  case commander.gendoc:
     runCommand('gendoc');
     break;
 
