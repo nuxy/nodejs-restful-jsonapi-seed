@@ -10,7 +10,6 @@
     "strictRouting": false,
     "accessControl": {
       "excludePaths": [
-        "/",
         "/ap[ip]-doc.*",
         "/login",
         "/wildcard-example/.*"
