@@ -108,6 +108,22 @@ The following [routes](src/routes/examples) have been enabled in the application
 
 When the server is running in _development_ mode [ESDoc](https://esdoc.org) generated documentation can be accessed at: [http://localhost:3000/app-doc](http://localhost:3000/app-doc)
 
+## Common questions
+
+> What was your motivation for creating this package?
+
+I wanted a package that was lightweight and provided all of the Production features needed to create a scalable API server.  While there are many packages available, most are lacking or require you to sacrifice simplicity or features for little gain.
+
+This package provides _everything_ you need to quickly build your application using a consistent and secure set of standards. 
+
+> Why use Babel, and not TypeScript?
+
+If you are using [ESDoc types](https://esdoc.org/manual/tags.html), and an IDE/Editor that supports code inspection, complexity like this is not necessary.
+
+> How do you set-up this package to use a custom database?
+
+You can update the [database wrapper](https://github.com/nuxy/nodejs-restful-jsonapi-seed/blob/master/src/lib/Database.js) example to use any [DBMS](https://www.npmjs.com/search?q=dbms) package available, while  extending the application [SessionStore](https://github.com/nuxy/nodejs-restful-jsonapi-seed/blob/master/src/lib/SessionStore.js) to use a compatible [Connection Session Store](https://github.com/expressjs/session#compatible-session-stores) module.
+
 ## Windows support
 
 This package has limited support for Windows due to cross-platform compatibility issues, most notably `SHELL` environment differences. Due to this, you can either run this package in [Docker](https://docker.com) or switch to a UNIX-like operating system.
