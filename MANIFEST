@@ -22,6 +22,7 @@ src/lib/Utils.js
 src/middleware/AccessControlManager.js
 src/middleware/ContentNegotiation.js
 src/middleware/ContentTypeHeader.js
+src/middleware/PackageVersionHeader.js
 src/middleware/PoweredByHeader.js
 src/middleware/SparseFieldsetsParser.js
 src/middleware/ValidatorResult.js
