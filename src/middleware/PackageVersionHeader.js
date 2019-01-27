@@ -8,7 +8,7 @@
  * @export default {Function}
  */
 export default (req, res, next) => {
-  if (process.env.NODE_ENV === undefined) {
+  if (process.env.NODE_ENV !== 'production') {
     res.setHeader('X-Version', process.env.npm_package_version);
   }
 
