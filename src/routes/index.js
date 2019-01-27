@@ -6,6 +6,7 @@ import {Router} from 'express';
 import accessControlManager  from '~/middleware/AccessControlManager.js';
 import contentNegotiation    from '~/middleware/ContentNegotiation.js';
 import contentTypeHeader     from '~/middleware/ContentTypeHeader.js';
+import packageVersionHeader  from '~/middleware/PackageVersionHeader.js';
 import poweredByHeader       from '~/middleware/PoweredByHeader.js';
 import sparseFieldsetsParser from '~/middleware/SparseFieldsetsParser.js';
 
@@ -23,6 +24,7 @@ export default ({config, db}) => {
   });
 
   // Middleware (Order is important).
+  router.use(packageVersionHeader);
   router.use(poweredByHeader);
   router.use(accessControlManager);
   router.use(contentNegotiation);
