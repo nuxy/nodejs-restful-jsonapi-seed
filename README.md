@@ -12,6 +12,7 @@ Everything you need to start building a scalable web application.
 - RESTful application interface.
 - JSON API standard request/responses.
 - ABAC (Attribute-Based Access Control)
+- HTTP/1/2 and HTTPS server.
 - Database driver support.
 - Session handling using cookies.
 - Schema-based validation.
