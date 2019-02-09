@@ -4,13 +4,6 @@
 export class Utils {
 
   /**
-   * Create a new instance of Utils.
-   */
-  constructor() {
-
-  }
-
-  /**
    * Compare an array of REGEX to a given value.
    *
    * @memberof Utils
