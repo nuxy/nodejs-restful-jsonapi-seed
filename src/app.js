@@ -121,8 +121,10 @@ function createServer(requestListener) {
   let sslEnable = config.get('server.http.ssl.enable');
   let version   = config.get('server.http.version');
 
+  let protocol = `HTTP/${version}`;
+
   if (version === 2 && sslEnable) {
-    console.log('HTTP/2 server enabled');
+    console.log(`${protocol} server created`);
 
     return require('http2').createSecureServer(
       sslConfig, requestListener
@@ -130,13 +132,15 @@ function createServer(requestListener) {
   }
 
   if (version === 1) {
-    console.log('HTTP/1 server enabled');
-
     if (sslEnable) {
+      console.log(`${protocol} SSL server created`);
+
       return require('https').createServer(
         sslConfig, requestListener
       );
     } else {
+      console.log(`${protocol} server created`);
+
       return require('http').createServer(
         requestListener
       );
