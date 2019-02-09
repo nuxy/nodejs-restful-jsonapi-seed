@@ -4,6 +4,13 @@
     "methods": ["DELETE", "GET", "PATCH", "POST", "PUT"],
     "credentials": false
   },
+  "http": {
+    "version": 1,
+    "encryption": {
+      "cert": "",
+      "key": ""
+    }
+  },
   "router": {
     "prefix": "/",
     "caseSensitive": false,

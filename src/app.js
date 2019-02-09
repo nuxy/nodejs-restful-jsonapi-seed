@@ -6,7 +6,6 @@ import cors       from 'cors';
 import express    from 'express';
 import fileUpload from 'express-fileupload';
 import session    from 'express-session';
-import http       from 'http';
 import logger     from 'morgan';
 import uuid       from 'uuid/v4';
 
@@ -21,7 +20,19 @@ import swaggerJson from '~/../swagger.json';
 
 // Init Express.
 let app = express();
-app.server = http.createServer(app);
+
+if (config.get('http.version') === 2) {
+
+  // HTTP/2
+  app.server = require('http2').createSecureServer({
+    cert: config.get('http.encryption.cert'),
+    key:  config.get('http.encryption.key')
+  }, app);
+} else {
+
+  // HTTP/1
+  app.server = require('http').createServer(app);
+}
 
 app.use(bodyParser.json({
   limit: config.get('server.parser.bodyLimit'),
