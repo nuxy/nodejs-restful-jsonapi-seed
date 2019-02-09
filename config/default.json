@@ -4,13 +4,6 @@
     "methods": ["DELETE", "GET", "PATCH", "POST", "PUT"],
     "credentials": false
   },
-  "http": {
-    "version": 1,
-    "encryption": {
-      "cert": "",
-      "key": ""
-    }
-  },
   "router": {
     "prefix": "/",
     "caseSensitive": false,
@@ -36,6 +29,17 @@
   "server": {
     "name": "0.0.0.0",
     "port": 3000,
+    "http": {
+      "version": 1,
+      "ssl": {
+        "enable": false,
+        "config": {
+          "ca": "",
+          "cert": "",
+          "key": ""
+        }
+      }
+    },
     "parser": {
       "bodyLimit": 102400
     },

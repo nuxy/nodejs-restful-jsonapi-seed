@@ -21,19 +21,9 @@ import swaggerJson from '~/../swagger.json';
 // Init Express.
 let app = express();
 
-if (config.get('http.version') === 2) {
+app.server = createServer(app);
 
-  // HTTP/2
-  app.server = require('http2').createSecureServer({
-    cert: config.get('http.encryption.cert'),
-    key:  config.get('http.encryption.key')
-  }, app);
-} else {
-
-  // HTTP/1
-  app.server = require('http').createServer(app);
-}
-
+// Server options.
 app.use(bodyParser.json({
   limit: config.get('server.parser.bodyLimit'),
   type: 'application/vnd.api+json'
@@ -118,6 +108,41 @@ Database(db => {
     }
   });
 });
+
+/**
+ * Returns a new instance of an HTTP server.
+ *
+ * @param {Function} requestListener
+ *
+ * @return {Function}
+ */
+function createServer(requestListener) {
+  let sslConfig = config.get('server.http.ssl.config');
+  let sslEnable = config.get('server.http.ssl.enable');
+  let version   = config.get('server.http.version');
+
+  if (version === 2 && sslEnable) {
+    console.log('HTTP/2 server enabled');
+
+    return require('http2').createSecureServer(
+      sslConfig, requestListener
+    );
+  }
+
+  if (version === 1) {
+    console.log('HTTP/1 server enabled');
+
+    if (sslEnable) {
+      return require('https').createServer(
+        sslConfig, requestListener
+      );
+    } else {
+      return require('http').createServer(
+        requestListener
+      );
+    }
+  }
+}
 
 /**
  * @export default {Express}
