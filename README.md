@@ -109,13 +109,27 @@ The following [routes](src/routes/examples) have been enabled in the application
 
 When the server is running in _development_ mode [ESDoc](https://esdoc.org) generated documentation can be accessed at: [http://localhost:3000/app-doc](http://localhost:3000/app-doc)
 
+## Enabling HTTP/2
+
+The [http2](https://nodejs.org/api/http2.html) module is an experimental API which relies on the [Latest Current Version](https://nodejs.org/en/download/current) of Node.js to work.  Furthermore, since there are no browsers known that support unencrypted HTTP/2, the use of [X.509 certificates](https://en.wikipedia.org/wiki/X.509) is necessary when communicating with browser clients.
+
+To set-up the server, first you must generate the certificate and key files:
+
+    $ openssl req -x509 -newkey rsa:2048 -nodes -sha256 -keyout localhost-key.pem -out localhost-cert.pem
+
+Then output each file as a string, manually adding the value to the [server config](https://github.com/nuxy/nodejs-restful-jsonapi-seed/blob/master/config/default.json#L36):
+
+    $ cat localhost-<key|cert>.pem | perl -pe 's/\n/\\n/g'
+
+See the [Node.js documentation](https://nodejs.org/api/http2.html#http2_client_side_example) for information regarding client-side set-up.
+
 ## Common questions
 
 > What was your motivation for creating this package?
 
 I wanted a package that was lightweight and provided all of the Production features needed to create a scalable API server.  While there are many packages available, most are lacking or require you to sacrifice simplicity or features for little gain.
 
-This package provides _everything_ you need to quickly build your application using a consistent and secure set of standards. 
+This package provides _everything_ you need to quickly build your application using a consistent and secure set of standards.
 
 > Why use Babel, and not TypeScript?
 
