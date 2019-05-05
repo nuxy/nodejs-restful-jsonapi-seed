@@ -6,6 +6,11 @@ import config          from 'config';
 // Local modules.
 import utils from '~/lib/Utils.js';
 
+// Configuration.
+let excludePaths  = config.get('router.accessControl.excludePaths');
+let grantsObject  = config.get('router.accessControl.grantsObject');
+let rolesByWeight = config.get('router.accessControl.rolesByWeight');
+
 /**
  * Middleware to manage access based on ABAC (Attribute-Based Access Control).
  *
@@ -13,57 +18,112 @@ import utils from '~/lib/Utils.js';
  *
  * @export default {Function}
  */
-export default (req, res, next) => {
-  let resource = '/' + req.url.split('/')[1];
+
+// eslint-disable-next-line max-statements
+export default ({method, path, session}, res, next) => {
 
   // Skip public routes.
-  let excludePaths = config.get('router.accessControl.excludePaths');
-
-  if (utils.matches(excludePaths, resource)) {
+  if (utils.matches(excludePaths, path)) {
     return next();
   }
 
-  // Check grants exist.
-  let grantsObject = config.get('router.accessControl.grantsObject');
-
-  if (grantsObject === undefined) {
+  // Check grants/roles exist.
+  if (!grantsObject || !rolesByWeight) {
     return next();
   }
 
   let ac = new AccessControl(grantsObject);
 
-  // Get role from session store.
-  if (req.session.role) {
-    let permission;
+  // Grant role access.
+  let user = session.role || 'anonymous';
 
-    // Check permissions.
-    switch (req.method) {
-      case 'POST':
-        permission = ac.can(req.session.role)
-          .createAny(resource);
-        break;
+  let userRoles = getUserRoles(rolesByWeight, user);
 
-      case 'PATCH':
-      case 'PUT':
-        permission = ac.can(req.session.role)
-          .updateAny(resource);
-        break;
+  let resource = getResource(userRoles, path);
 
-      case 'DELETE':
-        permission = ac.can(req.session.role)
-          .deleteAny(resource);
-        break;
+  if (resource && userRoles) {
+    userRoles.shift();
 
-      default:
-        permission = ac.can(req.session.role)
-          .readAny(resource);
-    }
+    ac.grant(user).extend(userRoles);
+  }
 
-    if (permission.granted) {
-      return next();
-    }
+  // Check permissions.
+  let permission;
+
+  switch (method) {
+    case 'POST':
+      permission = ac.can(user)
+        .createAny(resource);
+      break;
+
+    case 'PATCH':
+    case 'PUT':
+      permission = ac.can(user)
+        .updateAny(resource);
+      break;
+
+    case 'DELETE':
+      permission = ac.can(user)
+        .deleteAny(resource);
+      break;
+
+    default:
+      permission = ac.can(user)
+        .readAny(resource);
+  }
+
+  if (permission.granted) {
+    return next();
   }
 
   res.status(401).json({});
   res.end();
 };
+
+/**
+ * Return user roles for a given user.
+ *
+ * @param {Array} roles
+ *   User roles (weighted).
+ *
+ * @param {String} user
+ *   User name.
+ *
+ * @return {Array}
+ */
+function getUserRoles(roles, user) {
+  return roles.slice(roles.indexOf(user));
+}
+
+/**
+ * Return ABAC resource for a given path.
+ *
+ * @param {Array} roles
+ *   User roles (weighted).
+ *
+ * @param {String} path
+ *   Route path.
+ *
+ * @return {String}
+ */
+function getResource(roles, path) {
+  for (let i = 0; i < roles.length; i++) {
+    let role = roles[i];
+
+    // Check path for a dynamic segment.
+    if (grantsObject[role][path]) {
+
+      // None exists.
+      return path;
+    }
+
+    let basePath = path.substring(
+      0, path.lastIndexOf('/')
+    );
+
+    // Return the base path, if exists.
+    if (grantsObject[role][basePath]) {
+      return basePath;
+    }
+  }
+}
