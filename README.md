@@ -133,7 +133,7 @@ This package provides _everything_ you need to quickly build your application us
 
 > Why use Babel, and not TypeScript?
 
-If you are using [ESDoc types](https://esdoc.org/manual/tags.html), and an IDE/Editor that supports code inspection, complexity like this is not necessary.
+If you are using [ESDoc types](https://esdoc.org/manual/tags.html), and an IDE/Editor that supports Intellisense (code completion and typing).  Complexity like this is not necessary.
 
 > How do you set-up this package to use a custom database?
 
