@@ -15,7 +15,7 @@ import errorHandler from '~/serializers/ErrorHandler.js';
 export default (req, res, next) => {
 
   // Format and send results.
-  let formatter = ({location, msg, param}) => {
+  let formatter = ({msg, param}) => {
     return {
       detail: msg,
       source: {
