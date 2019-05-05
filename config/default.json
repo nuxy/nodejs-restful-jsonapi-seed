@@ -10,9 +10,7 @@
     "strictRouting": false,
     "accessControl": {
       "excludePaths": [
-        "/ap[ip]-doc.*",
-        "/login",
-        "/wildcard-example/.*"
+        "/ap[ip]-doc.*"
       ],
       "grantsObject": {
         "admin": {
@@ -22,8 +20,18 @@
             "update:any": ["*"],
             "delete:any": ["*"]
           }
+        },
+        "anonymous": {
+          "/login": {
+            "create:any": ["*"],
+            "read:any": ["*"]
+          }
         }
-      }
+      },
+      "rolesByWeight": [
+        "admin",
+        "anonymous"
+      ]
     }
   },
   "server": {
