@@ -31,9 +31,11 @@ export default ({config, db}) => {
   router.use(contentTypeHeader);
   router.use(sparseFieldsetsParser);
 
+  const app = {config, db};
+
   // Enable routes.
-  router.use('/login', loginRouter({config, db}));
-  router.use('/user',  userRouter ({config, db}));
+  router.use('/login', loginRouter(app));
+  router.use('/user',  userRouter (app));
 
   // Send root response.
   router.get('/', function(req, res) {
