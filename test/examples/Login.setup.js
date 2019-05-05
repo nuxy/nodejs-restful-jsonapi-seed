@@ -18,6 +18,7 @@ shared.setup('LoginSetup', function() {
 
     // Create a new session.
     this.request.post('/login')
+      .set('Content-Type', 'application/vnd.api+json')
       .send({
         username: 'foo',
         password: 'bar'
