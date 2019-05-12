@@ -26,8 +26,8 @@ export default ({config, db}) => resource({
    * For requests with an `id`, auto-load the user.
    */
   load ({session}, id, callback) {
-    let user = userResource(session).getUser(id),
-        err  = user ? null : {};
+    const user = userResource(session).getUser(id);
+    const err  = user ? null : {};
 
     callback(err, user);
   },
@@ -38,7 +38,7 @@ export default ({config, db}) => resource({
    * GET /user
    */
   list ({params, session}, res) {
-    let users = userResource(session).getUsers();
+    const users = userResource(session).getUsers();
     if (users) {
       res.status(200).json(serializer.get(users));
     } else {
@@ -52,7 +52,7 @@ export default ({config, db}) => resource({
    * POST /user
    */
   create ({body, session}, res) {
-    let user = userResource(session).createUser(body);
+    const user = userResource(session).createUser(body);
 
     res.status(201).json(serializer.get(user));
   },

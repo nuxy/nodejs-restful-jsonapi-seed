@@ -17,7 +17,7 @@ export default (req, res, next) => {
   }
 
   // Skip headers on empty response.
-  let send = res.send;
+  const send = res.send;
   res.send = function(body) {
     if (config.get('server.allowEmptyBody') === false || body) {
       res.set('Content-Type', 'application/vnd.api+json');

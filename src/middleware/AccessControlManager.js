@@ -7,9 +7,9 @@ import config          from 'config';
 import utils from '~/lib/Utils.js';
 
 // Configuration.
-let excludePaths  = config.get('router.accessControl.excludePaths');
-let grantsObject  = config.get('router.accessControl.grantsObject');
-let rolesByWeight = config.get('router.accessControl.rolesByWeight');
+const excludePaths  = config.get('router.accessControl.excludePaths');
+const grantsObject  = config.get('router.accessControl.grantsObject');
+const rolesByWeight = config.get('router.accessControl.rolesByWeight');
 
 /**
  * Middleware to manage access based on ABAC (Attribute-Based Access Control).
@@ -32,14 +32,14 @@ export default ({method, path, session}, res, next) => {
     return next();
   }
 
-  let ac = new AccessControl(grantsObject);
+  const ac = new AccessControl(grantsObject);
 
   // Grant role access.
-  let user = session.role || 'anonymous';
+  const user = session.role || 'anonymous';
 
-  let userRoles = getUserRoles(rolesByWeight, user);
+  const userRoles = getUserRoles(rolesByWeight, user);
 
-  let resource = getResource(userRoles, path);
+  const resource = getResource(userRoles, path);
 
   if (resource && userRoles) {
     userRoles.shift();
@@ -108,7 +108,7 @@ function getUserRoles(roles, user) {
  */
 function getResource(roles, path) {
   for (let i = 0; i < roles.length; i++) {
-    let role = roles[i];
+    const role = roles[i];
 
     // Check path for a dynamic segment.
     if (grantsObject[role][path]) {
@@ -117,7 +117,7 @@ function getResource(roles, path) {
       return path;
     }
 
-    let basePath = path.substring(
+    const basePath = path.substring(
       0, path.lastIndexOf('/')
     );
 

@@ -9,7 +9,7 @@
  * @export default {Function}
  */
 export default callback => {
-  let dbh = {};
+  const dbh = {};
 
   // Connect to your database, return the active handle.
   callback(dbh);

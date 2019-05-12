@@ -19,7 +19,7 @@ export default (session) => ({
   createUser: function(props) {
     this.initDatabase();
 
-    let user = {
+    const user = {
       id:     props.id || random.guid(),
       name:   props.name,
       age:    props.age,
@@ -38,7 +38,7 @@ export default (session) => ({
    *   User identifier.
    */
   deleteUser: function(id) {
-    let index = this.getUsers().indexOf(this.getUser(id));
+    const index = this.getUsers().indexOf(this.getUser(id));
 
     session.user.splice(index, 1);
   },
@@ -76,7 +76,7 @@ export default (session) => ({
    *   User properties.
    */
   updateUser: function(id, props) {
-    let index = this.getUsers().indexOf(this.getUser(id));
+    const index = this.getUsers().indexOf(this.getUser(id));
 
     for (let key in props) {
       if (session.user[index].hasOwnProperty(key)) {
