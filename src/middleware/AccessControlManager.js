@@ -50,30 +50,32 @@ export default ({method, path, session}, res, next) => {
   // Check permissions.
   let permission;
 
-  switch (method) {
-    case 'POST':
-      permission = ac.can(user)
-        .createAny(resource);
-      break;
+  if (resource) {
+    switch (method) {
+      case 'POST':
+        permission = ac.can(user)
+          .createAny(resource);
+        break;
 
-    case 'PATCH':
-    case 'PUT':
-      permission = ac.can(user)
-        .updateAny(resource);
-      break;
+      case 'PATCH':
+      case 'PUT':
+        permission = ac.can(user)
+          .updateAny(resource);
+        break;
 
-    case 'DELETE':
-      permission = ac.can(user)
-        .deleteAny(resource);
-      break;
+      case 'DELETE':
+        permission = ac.can(user)
+          .deleteAny(resource);
+        break;
 
-    default:
-      permission = ac.can(user)
-        .readAny(resource);
-  }
+      default:
+        permission = ac.can(user)
+          .readAny(resource);
+    }
 
-  if (permission.granted) {
-    return next();
+    if (permission.granted) {
+      return next();
+    }
   }
 
   res.status(401).json({});
