@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "1.2.0",
+    "version": "1.2.1",
     "title": "Examples",
     "description": "Routes that have been enabled in the application."
   },
