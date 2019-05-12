@@ -15,7 +15,7 @@ import errorHandler from '~/serializers/ErrorHandler.js';
 export default (req, res, next) => {
 
   // Format and send results.
-  let formatter = ({msg, param}) => {
+  const formatter = ({msg, param}) => {
     return {
       detail: msg,
       source: {
@@ -24,7 +24,7 @@ export default (req, res, next) => {
     };
   };
 
-  let errors = validationResult(req).formatWith(formatter);
+  const errors = validationResult(req).formatWith(formatter);
   if (errors.isEmpty() === false) {
     return res.status(422)
       .send(errorHandler('Invalid parameter', errors.array()));

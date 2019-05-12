@@ -18,7 +18,7 @@ import userRouter  from '~/routes/examples/User.js';
  * @export default
  */
 export default ({config, db}) => {
-  let router = Router({
+  const router = Router({
     caseSensitive: config.get('router.caseSensitive'),
     strict:        config.get('router.strictRouting'),
   });

@@ -19,7 +19,7 @@ import swaggerUi   from 'swagger-ui-express';
 import swaggerJson from '~/../swagger.json';
 
 // Init Express.
-let app = express();
+const app = express();
 
 app.server = createServer(app);
 
@@ -83,8 +83,8 @@ Database(db => {
   }
 
   // Launch server.
-  let serverPort = config.get('server.port');
-  let serverName = config.get('server.name');
+  const serverPort = config.get('server.port');
+  const serverName = config.get('server.name');
 
   app.server.listen(serverPort, serverName, () => {
     console.log(`Listening to ${serverName} on port ${serverPort}`);
@@ -117,11 +117,11 @@ Database(db => {
  * @return {Function}
  */
 function createServer(requestListener) {
-  let sslConfig = config.get('server.http.ssl.config');
-  let sslEnable = config.get('server.http.ssl.enable');
-  let version   = config.get('server.http.version');
+  const sslConfig = config.get('server.http.ssl.config');
+  const sslEnable = config.get('server.http.ssl.enable');
+  const version   = config.get('server.http.version');
 
-  let protocol = `HTTP/${version}`;
+  const protocol = `HTTP/${version}`;
 
   if (version === 2 && sslEnable) {
     console.log(`${protocol} server created`);

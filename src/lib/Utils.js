@@ -21,18 +21,18 @@ export class Utils {
    * @return {Boolean|undefined}
    *
    * @example
-   *   let items = [
+   *   const items = [
    *     'foo',
    *     'b.*',
    *     'qux'
    *   ];
    *
-   *   let result = Utils.matches(items, 'bar');
+   *   const result = Utils.matches(items, 'bar');
    *   // returns true
    */
   static matches(items, val) {
     for (let i = 0; i < items.length; i++) {
-      let regex = new RegExp(items[i] + '$');
+      const regex = new RegExp(items[i] + '$');
       if (regex.test(val)) {
         return true;
       }
@@ -55,7 +55,7 @@ export class Utils {
    * @return {Promise}
    *
    * @example
-   *   let tasks = [
+   *   const tasks = [
    *     Promise.resolve(),
    *     Promise.resolve(),
    *     Promise.resolve(),
