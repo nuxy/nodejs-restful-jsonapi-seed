@@ -2,14 +2,13 @@
 
 'use strict';
 
-let commander = require('commander');
-let copydir   = require('copy-dir');
-let execSync  = require('child_process').execSync;
-let fs        = require('fs');
-let path      = require('path');
+const commander = require('commander');
+const copyDir   = require('copy-dir');
+const execSync  = require('child_process').execSync;
+const fs        = require('fs');
 
 // Get global module $PATH
-let NODE_MODULES = path.dirname(process.env._) + '/../lib/node_modules';
+const NODE_MODULES = execSync('npm root -g').toString().trim();
 
 // Process CLI options.
 commander
@@ -29,39 +28,39 @@ commander
 process.env.NODE_ENV = commander.env || 'development';
 
 switch (true) {
-  case commander.create:
+  case !!commander.create:
     createProject(commander.create);
     break;
 
-  case commander.build:
+  case !!commander.build:
     runCommand('build');
     break;
 
-  case commander.start:
+  case !!commander.start:
     runCommand('start');
     break;
 
-  case commander.deploy:
+  case !!commander.deploy:
     runCommand('deploy');
     break;
 
-  case commander.watch:
+  case !!commander.watch:
     runCommand('watch');
     break;
 
-  case commander.lint:
+  case !!commander.lint:
     runCommand('lint');
     break;
 
-  case commander.test:
+  case !!commander.test:
     runCommand('test');
     break;
 
-  case commander.docker:
+  case !!commander.docker:
     runCommand('docker');
     break;
 
-  case commander.gendoc:
+  case !!commander.gendoc:
     runCommand('gendoc');
     break;
 
@@ -76,29 +75,29 @@ switch (true) {
  *   Output directory name.
  */
 function createProject(name) {
-  let srcdir = `${NODE_MODULES}/nodejs-restful-jsonapi-seed`;
+  const srcDir = `${NODE_MODULES}/nodejs-restful-jsonapi-seed`;
 
-  let outdir = process.cwd() + '/' + name;
+  const outDir = process.cwd() + '/' + name;
 
-  if (fs.existsSync(outdir)) {
+  if (fs.existsSync(outDir)) {
     console.log(`Cannot create directory \`${name}\`: Project exists`);
     process.exit(1);
   }
 
   // Load the package manifest.
-  let sources = fs.readFileSync(`${srcdir}/MANIFEST`);
+  const sources = fs.readFileSync(`${srcDir}/MANIFEST`);
 
   // Copy the project sources.
-  copydir.sync(srcdir, outdir, function (stat, filepath, filename) {
+  copyDir.sync(srcDir, outDir, function (stat, filepath, filename) {
     if (sources.includes(filename)) {
       return true;
     }
   });
 
   // Create package.json file.
-  let options = getPackageConfig(srcdir);
+  const options = getPackageConfig(srcDir);
 
-  let withProps = [
+  const withProps = [
     'name',
     'version',
     'description',
@@ -111,7 +110,7 @@ function createProject(name) {
     'engines'
   ];
 
-  let pkgOpts = {};
+  const pkgOpts = {};
 
   withProps.forEach(function(prop) {
     if (options[prop]) {
@@ -119,9 +118,9 @@ function createProject(name) {
     }
   });
 
-  fs.writeFileSync(`${outdir}/package.json`, JSON.stringify(pkgOpts, null, 2));
+  fs.writeFileSync(`${outDir}/package.json`, JSON.stringify(pkgOpts, null, 2));
 
-  console.log(`Project \`${name}\` created in:\n  ${outdir}`);
+  console.log(`Project \`${name}\` created in:\n  ${outDir}`);
 }
 
 /**
