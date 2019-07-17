@@ -133,11 +133,11 @@ This package provides _everything_ you need to quickly build your application us
 
 > Why use Babel, and not TypeScript?
 
-If you are using [ESDoc types](https://esdoc.org/manual/tags.html), and an IDE/Editor that supports Intellisense (code completion and typing).  Complexity like this is not necessary.
+If you are using [ESDoc types](https://esdoc.org/manual/tags.html) and an IDE/Editor that supports Intellisense (code completion and typing).  Complexity like this is not necessary.
 
 > How do you set-up this package to use a custom database?
 
-You can update the [database wrapper](https://github.com/nuxy/nodejs-restful-jsonapi-seed/blob/master/src/lib/Database.js) example to use any [DBMS](https://www.npmjs.com/search?q=dbms) package available, while  extending the application [SessionStore](https://github.com/nuxy/nodejs-restful-jsonapi-seed/blob/master/src/lib/SessionStore.js) to use a compatible [Connection Session Store](https://github.com/expressjs/session#compatible-session-stores) module.
+You can update the [database wrapper](https://github.com/nuxy/nodejs-restful-jsonapi-seed/blob/master/src/lib/Database.js) example to use any [DBMS](https://www.npmjs.com/search?q=dbms) package available while  extending the application [SessionStore](https://github.com/nuxy/nodejs-restful-jsonapi-seed/blob/master/src/lib/SessionStore.js) to use a compatible [Connection Session Store](https://github.com/expressjs/session#compatible-session-stores) module.
 
 ## Windows support
 
