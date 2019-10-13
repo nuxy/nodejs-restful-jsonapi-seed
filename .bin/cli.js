@@ -10,9 +10,14 @@ const fs        = require('fs');
 // Get global module $PATH
 const NODE_MODULES = execSync('npm root -g').toString().trim();
 
+const PACKAGE_NAME = 'nodejs-restful-jsonapi-seed';
+const PACKAGE_PATH = `${NODE_MODULES}/${PACKAGE_NAME}`;
+
 // Process CLI options.
 commander
   .usage('[options]')
+
+  /* eslint-disable max-len */
   .option('--create <project-name>', 'Create a new seed example project', /^[\w-]+$/g)
   .option('--build',  'Transpile ES6 sources (using Babel) to a distribution')
   .option('--start',  'Launch a single server instance from a transpiled distribution')
@@ -23,6 +28,8 @@ commander
   .option('--docker', 'Deploy your application as a Docker service')
   .option('--gendoc', 'Generate documentation using ESDoc')
   .option('--env <environment>', 'Set the NODE_ENV (default: development)')
+  /* eslint-enable max-len */
+
   .parse(process.argv);
 
 process.env.NODE_ENV = commander.env || 'development';
@@ -65,6 +72,8 @@ switch (true) {
     break;
 
   default:
+    printVersion(PACKAGE_PATH);
+
     commander.outputHelp();
 }
 
@@ -75,8 +84,6 @@ switch (true) {
  *   Output directory name.
  */
 function createProject(name) {
-  const srcDir = `${NODE_MODULES}/nodejs-restful-jsonapi-seed`;
-
   const outDir = process.cwd() + '/' + name;
 
   if (fs.existsSync(outDir)) {
@@ -85,17 +92,17 @@ function createProject(name) {
   }
 
   // Load the package manifest.
-  const sources = fs.readFileSync(`${srcDir}/MANIFEST`);
+  const sources = fs.readFileSync(`${PACKAGE_PATH}/MANIFEST`);
 
   // Copy the project sources.
-  copyDir.sync(srcDir, outDir, function (stat, filepath, filename) {
+  copyDir.sync(PACKAGE_PATH, outDir, function (stat, filepath, filename) {
     if (sources.includes(filename)) {
       return true;
     }
   });
 
   // Create package.json file.
-  const options = getPackageConfig(srcDir);
+  const options = getPackageConfig(PACKAGE_PATH);
 
   const withProps = [
     'name',
@@ -159,4 +166,16 @@ function runCommand(name) {
  */
 function getPackageConfig(path = '.') {
   return JSON.parse(fs.readFileSync(`${path}/package.json`).toString());
+}
+
+/**
+ * Print package version to the console.
+ *
+ * @param {String} path
+ *   Path to file (optional).
+ */
+function printVersion(path = '.') {
+  const version = getPackageConfig(path).version;
+
+  console.log(`${PACKAGE_NAME} (v${version})\n`);
 }
