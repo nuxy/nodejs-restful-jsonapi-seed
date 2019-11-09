@@ -46,7 +46,6 @@
     "memorystore": "^1.6.0",
     "morgan": "^1.9.1",
     "pm2": "^2.10.4",
-    "resource-router-middleware": "^0.7.0",
     "rotating-file-stream": "^1.4.6",
     "uuid": "^3.3.2"
   },

@@ -1,14 +1,13 @@
 'use strict';
 
-import resource from 'resource-router-middleware';
-
 // Local modules.
-import loginResource from '~/resources/examples/Login.js';
+import resourceRouter from '~/middleware/ResourceRouter.js';
+import loginResource  from '~/resources/examples/Login.js';
 
 /**
  * @export default
  */
-export default ({config, db}) => resource({
+export default ({config, db}) => resourceRouter({
 
   /**
    * Check for existing session.

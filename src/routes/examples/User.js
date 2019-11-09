@@ -1,16 +1,15 @@
 'use strict';
 
-import resource from 'resource-router-middleware';
-
 // Local modules.
-import userResource from '~/resources/examples/User.js';
-import serializer   from '~/serializers/examples/User.js';
-import {validate}   from '~/validators/examples/User.js';
+import resourceRouter from '~/middleware/ResourceRouter.js';
+import userResource   from '~/resources/examples/User.js';
+import serializer     from '~/serializers/examples/User.js';
+import {validate}     from '~/validators/examples/User.js';
 
 /**
  * @export default
  */
-export default ({config, db}) => resource({
+export default ({config, db}) => resourceRouter({
 
   /**
    * Property name to store preloaded user on `request`.
