@@ -6,11 +6,11 @@ import cors       from 'cors';
 import express    from 'express';
 import fileUpload from 'express-fileupload';
 import session    from 'express-session';
-import logger     from 'morgan';
 import uuid       from 'uuid/v4';
 
 // Local modules.
 import Database     from '~/lib/Database.js';
+import Logger       from '~/lib/Logger.js';
 import SessionStore from '~/lib/SessionStore.js';
 import indexRouter  from '~/routes/index.js';
 
@@ -61,14 +61,14 @@ switch (process.env.NODE_ENV) {
   case 'production':
   case 'qa':
   case 'staging':
-    app.use(logger('combined'));
+    app.use(Logger('combined'));
     break;
 
   case 'test':
     break;
 
   default:
-    app.use(logger('dev'));
+    app.use(Logger('dev'));
 }
 
 // Init database (if available).

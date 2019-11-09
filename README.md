@@ -16,6 +16,7 @@ Everything you need to start building a scalable web application.
 - Database driver support.
 - Session handling using cookies.
 - Schema-based validation.
+- Stream-based logging and file rotation.
 - Production process manager.
 - ESDoc App/Swagger API documentation.
 - Deployable as a Docker service.

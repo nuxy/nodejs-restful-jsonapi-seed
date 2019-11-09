@@ -4,6 +4,11 @@
     "methods": ["DELETE", "GET", "PATCH", "POST", "PUT"],
     "credentials": false
   },
+  "logger": {
+    "enable": false,
+    "outputDir": "log",
+    "rotateInterval": "1d"
+  },
   "router": {
     "prefix": "/",
     "caseSensitive": false,
