@@ -6,8 +6,6 @@ import memoryStore from 'memorystore';
  * Example of a session store wrapper (WILL NOT WORK IN A SERVER CLUSTER).
  *
  * @see https://www.npmjs.com/package/express-session#compatible-session-stores
- *
- * @class
  */
 class SessionStore {
 

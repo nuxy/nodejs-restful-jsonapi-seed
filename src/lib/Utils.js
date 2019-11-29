@@ -8,8 +8,6 @@ export class Utils {
   /**
    * Compare an array of REGEX to a given value.
    *
-   * @static
-   *
    * @param {Array} items
    *   Array to search.
    *
@@ -39,8 +37,6 @@ export class Utils {
 
   /**
    * Execute promised operation in sequential order.
-   *
-   * @static
    *
    * @param {String} name
    *   Task name.

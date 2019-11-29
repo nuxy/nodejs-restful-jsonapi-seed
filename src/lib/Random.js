@@ -6,8 +6,6 @@ import Chance from 'chance';
  * Provides random data generation methods.
  *
  * @see http://chancejs.com
- *
- * @class
  */
 class Random extends Chance {
 
