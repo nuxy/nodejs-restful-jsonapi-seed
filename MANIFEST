@@ -16,6 +16,7 @@ config/test.json
 src
 src/app.js
 src/lib/Database.js
+src/lib/Logger.js
 src/lib/Random.js
 src/lib/SessionStore.js
 src/lib/Utils.js
@@ -24,6 +25,7 @@ src/middleware/ContentNegotiation.js
 src/middleware/ContentTypeHeader.js
 src/middleware/PackageVersionHeader.js
 src/middleware/PoweredByHeader.js
+src/middleware/ResourceRouter.js
 src/middleware/SparseFieldsetsParser.js
 src/middleware/ValidatorResult.js
 src/resources/.gitkeep
