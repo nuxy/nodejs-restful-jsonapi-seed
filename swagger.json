@@ -35,27 +35,6 @@
         ],
         "responses": {
           "200": {
-            "description": "Success"
-          },
-          "403": {
-            "description": "Forbidden"
-          },
-          "422": {
-            "description": "Unprocessable Entity",
-            "schema": {
-              "$ref": "#/definitions/ValidationError"
-            }
-          }
-        }
-      },
-      "get": {
-        "summary": "Check session status.",
-        "operationId": "loginGet",
-        "tags": [
-          "Login"
-        ],
-        "responses": {
-          "200": {
             "description": "Success",
             "schema": {
               "$ref": "#/definitions/LoginSuccess"
@@ -252,7 +231,12 @@
       "type": "object",
       "properties": {
         "session": {
-          "type": "boolean"
+          "type": "object",
+          "properties": {
+            "role": {
+              "type": "string"
+            }
+          }
         }
       }
     },

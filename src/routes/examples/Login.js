@@ -3,6 +3,7 @@
 // Local modules.
 import resourceRouter from '~/middleware/ResourceRouter.js';
 import loginResource  from '~/resources/examples/Login.js';
+import {validate}     from '~/validators/examples/Login.js';
 
 /**
  * @export default
@@ -10,17 +11,9 @@ import loginResource  from '~/resources/examples/Login.js';
 export default ({config, db}) => resourceRouter({
 
   /**
-   * Check for existing session.
-   *
-   * GET /login
+   * Enable validation.
    */
-  index ({session}, res) {
-    if (session) {
-      res.status(200).json({session: !!session.role});
-    } else {
-      res.status(403).json({});
-    }
-  },
+  middleware: validate,
 
   /**
    * Create a new session.
@@ -29,9 +22,12 @@ export default ({config, db}) => resourceRouter({
    */
   create ({body, session}, res) {
     if (loginResource(session).authenticate(body.username, body.password)) {
-      res.status(200).json({});
+      res.status(200).json({
+        session: {
+          role: session.role
+        }});
     } else {
-      res.status(403).json({});
+      res.status(403).send();
     }
   }
 });

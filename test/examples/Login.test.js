@@ -26,17 +26,6 @@ describe('Login', function() {
     it('returns no errors', function(done) {
       chai.expect(this.session) .to.be.true;
       done();
-    });
-  });
-
-  describe('Check session exists', function() {
-    it('returns no errors', function(done) {
-      this.request.get('/login')
-        .end(function(err, res) {
-          chai.expect(res.statusCode) .to.equal(200);
-          chai.expect(res.body)       .to.have.a.property('session');
-          done();
-        });
-    });
+    });;
   });
 });
