@@ -1,12 +1,12 @@
 'use strict';
 
-import bodyParser from 'body-parser';
-import config     from 'config';
-import cors       from 'cors';
-import express    from 'express';
-import fileUpload from 'express-fileupload';
-import session    from 'express-session';
-import uuid       from 'uuid/v4';
+import bodyParser   from 'body-parser';
+import config       from 'config';
+import cors         from 'cors';
+import express      from 'express';
+import fileUpload   from 'express-fileupload';
+import session      from 'express-session';
+import {v4 as uuid} from 'uuid';
 
 // Local modules.
 import Database     from '~/lib/Database.js';
