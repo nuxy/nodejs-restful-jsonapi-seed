@@ -1,6 +1,5 @@
 'use strict';
 
-import bodyParser   from 'body-parser';
 import config       from 'config';
 import cors         from 'cors';
 import express      from 'express';
@@ -24,7 +23,7 @@ const app = express();
 app.server = createServer(app);
 
 // Server options.
-app.use(bodyParser.json({
+app.use(express.json({
   limit: config.get('server.parser.bodyLimit'),
   type: 'application/vnd.api+json'
 }));
