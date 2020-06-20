@@ -1,6 +1,6 @@
 'use strict';
 
-import {validationResult} from 'express-validator/check';
+import {validationResult} from 'express-validator';
 
 // Local modules.
 import errorHandler from '~/serializers/ErrorHandler.js';

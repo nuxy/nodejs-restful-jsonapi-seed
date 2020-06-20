@@ -1,6 +1,6 @@
 'use strict';
 
-import {checkSchema} from 'express-validator/check';
+import {checkSchema} from 'express-validator';
 
 // Local modules.
 import validatorResult from '~/middleware/ValidatorResult.js';
