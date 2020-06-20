@@ -1,15 +1,18 @@
 'use strict';
 
+//process.env.ALLOW_CONFIG_MUTATIONS = 'true';
+
 import {AccessControl} from 'accesscontrol';
 import config          from 'config';
+import deepCopy        from 'deep-copy';
 
 // Local modules.
 import utils from '~/lib/Utils.js';
 
 // Configuration.
-const excludePaths  = config.get('router.accessControl.excludePaths');
-const grantsObject  = config.get('router.accessControl.grantsObject');
-const rolesByWeight = config.get('router.accessControl.rolesByWeight');
+let excludePaths  = config.get('router.accessControl.excludePaths');
+let grantsObject  = config.get('router.accessControl.grantsObject');
+let rolesByWeight = config.get('router.accessControl.rolesByWeight');
 
 /**
  * Middleware to manage access based on ABAC (Attribute-Based Access Control).
@@ -21,6 +24,9 @@ const rolesByWeight = config.get('router.accessControl.rolesByWeight');
 
 // eslint-disable-next-line max-statements
 export default ({method, path, session}, res, next) => {
+  excludePaths  = deepCopy(excludePaths);
+  grantsObject  = deepCopy(grantsObject);
+  rolesByWeight = deepCopy(rolesByWeight);
 
   // Skip public routes.
   if (utils.matches(excludePaths, path)) {
@@ -38,8 +44,7 @@ export default ({method, path, session}, res, next) => {
   const user = session.role || 'anonymous';
 
   const userRoles = getUserRoles(rolesByWeight, user);
-
-  const resource = getResource(userRoles, path);
+  const resource  = getResource(userRoles, path);
 
   if (resource && userRoles) {
     userRoles.shift();
