@@ -11,8 +11,6 @@ class SSL {
   /**
    * Return the CA bundle as string.
    *
-   * @static
-   *
    * @return {String|undefined}
    *
    * @example
@@ -27,8 +25,6 @@ class SSL {
   /**
    * Return the certificate as string.
    *
-   * @static
-   *
    * @return {String|undefined}
    *
    * @example
@@ -42,8 +38,6 @@ class SSL {
 
   /**
    * Return the private key as string.
-   *
-   * @static
    *
    * @return {String|undefined}
    *
