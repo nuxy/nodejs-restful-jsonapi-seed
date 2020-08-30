@@ -1,7 +1,5 @@
 'use strict';
 
-//process.env.ALLOW_CONFIG_MUTATIONS = 'true';
-
 import {AccessControl} from 'accesscontrol';
 import config          from 'config';
 import deepCopy        from 'deep-copy';
