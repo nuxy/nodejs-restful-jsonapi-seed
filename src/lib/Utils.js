@@ -3,7 +3,7 @@
 /**
  * Provides utility methods.
  */
-export class Utils {
+class Utils {
 
   /**
    * Compare an array of REGEX to a given value.
@@ -65,7 +65,6 @@ export class Utils {
     return tasks.reduce(function(current, next) {
       return current.then(next);
     }, Promise.resolve([]))
-      .then(obj => obj)
       .catch(function(err) {
         throw new Error(`${name} failed due to ${err.message}`);
       });
