@@ -11,6 +11,7 @@ import {v4 as uuid} from 'uuid';
 import Database     from '~/lib/Database.js';
 import Logger       from '~/lib/Logger.js';
 import SessionStore from '~/lib/SessionStore.js';
+import SSL          from '~/lib/SSL.js';
 import indexRouter  from '~/routes/index.js';
 
 // Swagger examples.
@@ -116,9 +117,14 @@ Database(db => {
  * @return {Function}
  */
 function createServer(requestListener) {
-  const sslConfig = config.get('server.http.ssl.config');
   const sslEnable = config.get('server.http.ssl.enable');
   const version   = config.get('server.http.version');
+
+  const options = {
+    ca:   SSL.ca(),
+    cert: SSL.cert(),
+    key:  SSL.key()
+  };
 
   const protocol = `HTTP/${version}`;
 
@@ -126,7 +132,7 @@ function createServer(requestListener) {
     console.log(`${protocol} server created`);
 
     return require('http2').createSecureServer(
-      sslConfig, requestListener
+      options, requestListener
     );
   }
 
@@ -135,7 +141,7 @@ function createServer(requestListener) {
       console.log(`${protocol} SSL server created`);
 
       return require('https').createServer(
-        sslConfig, requestListener
+        options, requestListener
       );
     } else {
       console.log(`${protocol} server created`);

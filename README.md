@@ -118,11 +118,21 @@ To set-up the server, first you must generate the certificate and key files:
 
     $ openssl req -x509 -newkey rsa:2048 -nodes -sha256 -keyout localhost-key.pem -out localhost-cert.pem
 
-Then output each file as a string, manually adding the value to the [server config](https://github.com/nuxy/nodejs-restful-jsonapi-seed/blob/master/config/default.json#L36):
+See the [Node.js documentation](https://nodejs.org/api/http2.html#http2_client_side_example) for information regarding client-side set-up.
+
+## SSL configuration
+
+Depending on your application requirements there are multiple ways to set-up the [server config](https://github.com/nuxy/nodejs-restful-jsonapi-seed/blob/master/config/default.json#L49):
+
+### Absolute path
+
+If your certificates are installed in a location outside of the application scope (e.g. `/etc/ssl/certs`), and your application has the permissions to access these files, you can add the _absolute path_ to the respective configuration values.
+
+### String output
+
+If, for whatever reason, you cannot host the certificates locally (shared environment), you can output each file as a newline-delimited string using the following command and add the _string output_ to the respective configuration values.
 
     $ cat localhost-<key|cert>.pem | perl -pe 's/\n/\\n/g'
-
-See the [Node.js documentation](https://nodejs.org/api/http2.html#http2_client_side_example) for information regarding client-side set-up.
 
 ## Common questions
 
