@@ -32,7 +32,7 @@ commander
 
   .parse(process.argv);
 
-process.env.NODE_ENV = commander.env || 'development';
+const NODE_CONFIG_ENV = commander.env || 'development';
 
 switch (true) {
   case !!commander.create:
@@ -147,7 +147,7 @@ function runCommand(name) {
 
   // Execute the NPM script.
   if (getPackageConfig().scripts[name]) {
-    execSync(`npm run ${name}`, {
+    execSync(`NODE_CONFIG_ENV=${NODE_CONFIG_ENV} npm run ${name}`, {
       stdio: 'inherit'
     });
   } else {
