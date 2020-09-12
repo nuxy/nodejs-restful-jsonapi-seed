@@ -19,6 +19,7 @@ src/lib/Database.js
 src/lib/Logger.js
 src/lib/Random.js
 src/lib/SessionStore.js
+src/lib/SSL.js
 src/lib/Utils.js
 src/middleware/AccessControlManager.js
 src/middleware/ContentNegotiation.js
