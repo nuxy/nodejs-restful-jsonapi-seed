@@ -95,8 +95,12 @@ function createProject(name) {
   const sources = fs.readFileSync(`${PACKAGE_PATH}/MANIFEST`);
 
   // Copy the project sources.
-  copyDir.sync(PACKAGE_PATH, outDir, function (stat, filepath, filename) {
-    if (sources.includes(filename)) {
+  copyDir.sync(PACKAGE_PATH, outDir, {
+    filter: function(stat, filepath, filename) {
+      if (!sources.includes(filename)) {
+        return false;
+      }
+
       return true;
     }
   });
