@@ -12,7 +12,7 @@ import Database     from '~/lib/Database.js';
 import Logger       from '~/lib/Logger.js';
 import SessionStore from '~/lib/SessionStore.js';
 import SSL          from '~/lib/SSL.js';
-import indexRouter  from '~/routes/index.js';
+import Routes       from '~/routes';
 
 // Swagger examples.
 import swaggerUi   from 'swagger-ui-express';
@@ -75,7 +75,7 @@ switch (process.env.NODE_ENV) {
 Database(db => {
 
   // Enable routes.
-  app.use(config.get('router.prefix'), indexRouter({config, db}));
+  app.use(config.get('router.prefix'), Routes({config, db}));
 
   if (process.env.NODE_ENV === undefined) {
     app.use('/api-doc/', swaggerUi.serve, swaggerUi.setup(swaggerJson));

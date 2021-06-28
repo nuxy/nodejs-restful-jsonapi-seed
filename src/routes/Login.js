@@ -2,8 +2,8 @@
 
 // Local modules.
 import resourceRouter from '~/middleware/ResourceRouter.js';
-import loginResource  from '~/resources/examples/Login.js';
-import {validate}     from '~/validators/examples/Login.js';
+import loginResource  from '~/resources/Login.js';
+import {validate}     from '~/validators/Login.js';
 
 /**
  * @export default

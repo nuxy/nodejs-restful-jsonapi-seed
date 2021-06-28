@@ -1,6 +1,8 @@
 'use strict';
 
 import {Router} from 'express';
+import {Glob}   from 'glob';
+import path     from 'path';
 
 // Local modules.
 import accessControlManager  from '~/middleware/AccessControlManager.js';
@@ -9,10 +11,6 @@ import contentTypeHeader     from '~/middleware/ContentTypeHeader.js';
 import packageVersionHeader  from '~/middleware/PackageVersionHeader.js';
 import poweredByHeader       from '~/middleware/PoweredByHeader.js';
 import sparseFieldsetsParser from '~/middleware/SparseFieldsetsParser.js';
-
-// Examples.
-import loginRouter from '~/routes/examples/Login.js';
-import userRouter  from '~/routes/examples/User.js';
 
 /**
  * @export default
@@ -33,9 +31,21 @@ export default ({config, db}) => {
 
   const app = {config, db};
 
-  // Enable routes.
-  router.use('/login', loginRouter(app));
-  router.use('/user',  userRouter (app));
+  // Enable configured routes.
+  const baseDir = './dist/routes';
+
+  new Glob('**/*.js', {cwd: baseDir, ignore: '**/index.js'}, (err, files) => {
+    if (err) {
+      throw new Error(`Routing config: ${err.message}`);
+    }
+
+    files.forEach(file => {
+      const name  = path.parse(file).name;
+      const route = require(`~/routes/${name}`).default(app);
+
+      router.use(`/${name}`, route);
+    });
+  });
 
   // Send root response.
   router.get('/', function(req, res) {
