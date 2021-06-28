@@ -127,7 +127,7 @@ function createServer(requestListener) {
   };
 
   const protocol = `HTTP/${version}`;
-  const status   = `server created (${process.env.NODE_CONFIG_ENV})`;
+  const status   = `server created (${process.env.NODE_ENV || 'development'})`;
 
   if (version === 2 && sslEnable) {
     console.log(`${protocol} ${status}`);
