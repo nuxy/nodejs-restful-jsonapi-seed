@@ -91,8 +91,15 @@ function createProject(name) {
     process.exit(1);
   }
 
+  const manifest = `${PACKAGE_PATH}/MANIFEST`;
+
+  if (!fs.existsSync(manifest)) {
+    console.log(`Cannot find \`${manifest}\`: node \$PATH conflict?`);
+    process.exit(1);
+  }
+
   // Load the package manifest.
-  const sources = fs.readFileSync(`${PACKAGE_PATH}/MANIFEST`);
+  const sources = fs.readFileSync(manifest);
 
   // Copy the project sources.
   copyDir.sync(PACKAGE_PATH, outDir, {
