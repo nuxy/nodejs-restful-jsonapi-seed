@@ -10,11 +10,6 @@
  */
 export default (req, res, next) => {
 
-  // Exclude GET requests.
-  if (req.method !== 'GET') {
-    return next();
-  }
-
   // Check client request headers.
   if (/application\/vnd\.api\+json;*./.test(req.header('Accept'))) {
     res.sendStatus(406);
