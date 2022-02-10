@@ -8,9 +8,9 @@ import deepCopy        from 'deep-copy';
 import utils from '~/lib/Utils.js';
 
 // Configuration.
-let excludePaths  = config.get('router.accessControl.excludePaths');
-let grantsObject  = config.get('router.accessControl.grantsObject');
-let rolesByWeight = config.get('router.accessControl.rolesByWeight');
+const excludePaths  = deepCopy(config.get('router.accessControl.excludePaths'));
+const grantsObject  = deepCopy(config.get('router.accessControl.grantsObject'));
+const rolesByWeight = deepCopy(config.get('router.accessControl.rolesByWeight'));
 
 /**
  * Middleware to manage access based on ABAC (Attribute-Based Access Control).
@@ -22,9 +22,6 @@ let rolesByWeight = config.get('router.accessControl.rolesByWeight');
 
 // eslint-disable-next-line max-statements
 export default ({method, path, session}, res, next) => {
-  excludePaths  = deepCopy(excludePaths);
-  grantsObject  = deepCopy(grantsObject);
-  rolesByWeight = deepCopy(rolesByWeight);
 
   // Skip public routes.
   if (utils.matches(excludePaths, path)) {
