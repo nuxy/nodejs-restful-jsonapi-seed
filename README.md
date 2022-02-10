@@ -18,7 +18,7 @@ Everything you need to start building a scalable web application.
 - Schema-based validation.
 - Stream-based logging and file rotation.
 - Production process manager.
-- ESDoc App/Swagger API documentation.
+- JSDoc App/Swagger API documentation.
 - Deployable as a Docker service.
 
 ## Dependencies
@@ -46,7 +46,7 @@ Install the command-line utility using [NPM](https://npmjs.com).
       --lint                   Run ESLint on project sources
       --test                   Run Mocha integration tests
       --docker                 Deploy your application as a Docker service
-      --gendoc                 Generate documentation using ESDoc
+      --gendoc                 Generate documentation using JSDoc
       --env <environment>      Set the NODE_ENV (default: development)
       -h, --help               output usage information
 
@@ -98,7 +98,7 @@ Deploy your application as a [Docker](https://docker.com) service:
 
     $ npm run docker
 
-Generate documentation using [ESDoc](https://esdoc.org):
+Generate documentation using [JSDoc](https://jsdoc.app):
 
     $ npm run gendoc
 
@@ -108,7 +108,7 @@ The following [routes](src/routes/examples) have been enabled in the application
 
 ## Documentation
 
-When the server is running in _development_ mode [ESDoc](https://esdoc.org) generated documentation can be accessed at: [http://localhost:3000/app-doc](http://localhost:3000/app-doc)
+When the server is running in _development_ mode [JSDoc](https://jsdoc.app) generated documentation can be accessed at: [http://localhost:3000/app-doc](http://localhost:3000/app-doc)
 
 ## Enabling HTTP/2
 
@@ -144,7 +144,7 @@ This package provides _everything_ you need to quickly build your application us
 
 > Why use Babel, and not TypeScript?
 
-If you are using [ESDoc types](https://esdoc.org/manual/tags.html) and an IDE/Editor that supports Intellisense (code completion and typing).  Complexity like this is not necessary.
+If you are using [JSDoc tags](https://jsdoc.app/about-block-inline-tags.html) and an IDE/Editor that supports Intellisense (code completion and typing).  Complexity like this is not necessary.
 
 > How do you set-up this package to use a custom database?
 
