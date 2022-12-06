@@ -86,7 +86,7 @@ Launch the server (development mode) with [nodemon](https://nodemon.io):
 
     $ npm run watch
 
-Run [ESLint](https://eslint.org/) on project sources:
+Run [ESLint](https://eslint.org) on project sources:
 
     $ npm run lint
 
@@ -97,6 +97,10 @@ Run [Mocha](https://mochajs.org) integration tests:
 Deploy your application as a [Docker](https://docker.com) service:
 
     $ npm run docker
+
+Generate [Swagger](https://swagger.io) definitions:
+
+    $ npm run genapi
 
 Generate documentation using [JSDoc](https://jsdoc.app):
 

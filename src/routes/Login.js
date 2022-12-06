@@ -16,9 +16,44 @@ export default ({config, db}) => resourceRouter({
   middleware: validate,
 
   /**
-   * Create a new session.
+   * @swagger
    *
-   * POST /login
+   * /login:
+   *   post:
+   *     description: Create a new session.
+   *     parameters:
+   *       - name: json
+   *         in: body
+   *         schema:
+   *           type: object
+   *           properties:
+   *             username:
+   *               type: string
+   *               example: foo
+   *             password:
+   *               type: string
+   *               example: bar
+   *     responses:
+   *       200:
+   *         description: Success
+   *         content:
+   *           application/json:
+   *             schema:
+   *               type: object
+   *               properties:
+   *                 session:
+   *                   type: object
+   *                   properties:
+   *                     role:
+   *                       type: string
+   *       403:
+   *         description: Forbidden
+   *       422:
+   *         description: Unprocessable Entity
+   *         schema:
+   *            "$ref": "#/definitions/ValidationError"
+   *     tags:
+   *       - Login
    */
   create ({body, session}, res) {
     if (loginResource(session).authenticate(body.username, body.password)) {

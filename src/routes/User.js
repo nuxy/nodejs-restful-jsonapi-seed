@@ -32,9 +32,22 @@ export default ({config, db}) => resourceRouter({
   },
 
   /**
-   * List all users.
+   * @swagger
    *
-   * GET /user
+   * /user:
+   *   get:
+   *     description: List all users.
+   *     responses:
+   *       200:
+   *         description: Returns JSON response.
+   *         content:
+   *           application/json:
+   *             schema:
+   *               "$ref": "#/definitions/UserGetAll"
+   *     security:
+   *       - cookieAuth: []
+   *     tags:
+   *       - User
    */
   list ({params, session}, res) {
     const users = userResource(session).getUsers();
@@ -46,9 +59,33 @@ export default ({config, db}) => resourceRouter({
   },
 
   /**
-   * Create a new user.
+   * @swagger
    *
-   * POST /user
+   * /user:
+   *   post:
+   *     description: Create new user.
+   *     parameters:
+   *       - name: json
+   *         in: body
+   *         schema:
+   *           "$ref": "#/definitions/UserPost"
+   *     responses:
+   *       201:
+   *         description: Returns JSON response.
+   *         content:
+   *           application/json:
+   *             schema:
+   *               "$ref": "#/definitions/UserGetOne"
+   *       401:
+   *         description: Unauthorized
+   *       422:
+   *         description: Unprocessable Entity
+   *         schema:
+   *            "$ref": "#/definitions/ValidationError"
+   *     security:
+   *       - cookieAuth: []
+   *     tags:
+   *       - User
    */
   create ({body, session}, res) {
     const user = userResource(session).createUser(body);
@@ -57,18 +94,57 @@ export default ({config, db}) => resourceRouter({
   },
 
   /**
-   * Return a given user.
+   * @swagger
    *
-   * GET /user/:id
+   * /user/00000000-0000-0000-0000-000000000001:
+   *   get:
+   *     description: List one user.
+   *     responses:
+   *       200:
+   *         description: Success
+   *         content:
+   *           application/json:
+   *             schema:
+   *               "$ref": "#/definitions/UserGetOne"
+   *       401:
+   *         description: Unauthorized
+   *       422:
+   *         description: Unprocessable Entity
+   *         schema:
+   *            "$ref": "#/definitions/ValidationError"
+   *     security:
+   *       - cookieAuth: []
+   *     tags:
+   *       - User
    */
   read ({user}, res) {
     res.status(200).json(serializer.get(user));
   },
 
   /**
-   * Update a given user.
+   * @swagger
    *
-   * PUT /user/:id
+   * /user/00000000-0000-0000-0000-000000000001:
+   *   put:
+   *     description: Update a given user (resource).
+   *     parameters:
+   *       - name: json
+   *         in: body
+   *         schema:
+   *           "$ref": "#/definitions/UserPut"
+   *     responses:
+   *       204:
+   *         description: Success
+   *       401:
+   *         description: Unauthorized
+   *       422:
+   *         description: Unprocessable Entity
+   *         schema:
+   *            "$ref": "#/definitions/ValidationError"
+   *     security:
+   *       - cookieAuth: []
+   *     tags:
+   *       - User
    */
   update ({user, body, session}, res) {
     userResource(session).updateUser(user.id, body);
@@ -77,9 +153,29 @@ export default ({config, db}) => resourceRouter({
   },
 
   /**
-   * Modify a given user.
+   * @swagger
    *
-   * PATCH /user/:id
+   * /user/00000000-0000-0000-0000-000000000001:
+   *   patch:
+   *     description: Modify a given user (property).
+   *     parameters:
+   *       - name: json
+   *         in: body
+   *         schema:
+   *           "$ref": "#/definitions/UserPatch"
+   *     responses:
+   *       204:
+   *         description: Success
+   *       401:
+   *         description: Unauthorized
+   *       422:
+   *         description: Unprocessable Entity
+   *         schema:
+   *            "$ref": "#/definitions/ValidationError"
+   *     security:
+   *       - cookieAuth: []
+   *     tags:
+   *       - User
    */
   modify ({user, body, session}, res) {
     userResource(session).updateUser(user.id, body);
@@ -88,13 +184,104 @@ export default ({config, db}) => resourceRouter({
   },
 
   /**
-   * Delete a given user.
+   * @swagger
    *
-   * DELETE /user/:id
+   * /user/00000000-0000-0000-0000-000000000001:
+   *   delete:
+   *     description: Delete a given user.
+   *     responses:
+   *       204:
+   *         description: Success
+   *       401:
+   *         description: Unauthorized
+   *       422:
+   *         description: Unprocessable Entity
+   *         schema:
+   *            "$ref": "#/definitions/ValidationError"
+   *     security:
+   *       - cookieAuth: []
+   *     tags:
+   *       - User
    */
   delete ({user, session}, res) {
     userResource(session).deleteUser(user.id);
 
     res.status(204).send();
   }
+
+  /**
+   * @swagger
+   *
+   * definitions:
+   *   UserGetAll:
+   *     type: object
+   *     properties:
+   *       data:
+   *         type: array
+   *         items:
+   *           type: object
+   *           properties:
+   *             type:
+   *               type: string
+   *             id:
+   *               type: string
+   *             attributes:
+   *               type: object
+   *               properties:
+   *                 name:
+   *                   type: string
+   *                 age:
+   *                   type: string
+   *                 gender:
+   *                   type: string
+   *   UserGetOne:
+   *     type: object
+   *     properties:
+   *       data:
+   *         type: object
+   *         properties:
+   *           type:
+   *             type: string
+   *           id:
+   *             type: string
+   *           attributes:
+   *             type: object
+   *             properties:
+   *               name:
+   *                 type: string
+   *               age:
+   *                 type: string
+   *               gender:
+   *                 type: string
+   *   UserPatch:
+   *     type: object
+   *     properties:
+   *       name:
+   *         type: string
+   *         example: foo bar
+   *       age:
+   *         type: number
+   *         example: 45
+   *       gender:
+   *         type: string
+   *         example: Binary
+   *   UserPut:
+   *     type: object
+   *     properties:
+   *       name:
+   *         type: string
+   *         example: biz baz
+   *   UserPost:
+   *     type: object
+   *     properties:
+   *       name:
+   *         type: string
+   *         example: foo bar
+   *       age:
+   *         type: number
+   *         example: 45
+   *       gender:
+   *         type: string
+   *         example: Binary
+   */
 });
