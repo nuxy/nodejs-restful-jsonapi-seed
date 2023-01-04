@@ -75,7 +75,7 @@
     "micromatch": "^4.0.0"
   },
   "engines": {
-    "node": ">=12.22.0"
+    "node": ">=14.0.0"
   },
   "bin": {
     "seed-cli": ".bin/cli.js"
