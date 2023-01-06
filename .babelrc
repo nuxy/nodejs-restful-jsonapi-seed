@@ -5,5 +5,5 @@
     }],
     ["transform-html-import-to-string"]
   ],
-  "presets": ["env"]
+  "presets": ["@babel/preset-env"]
 }
