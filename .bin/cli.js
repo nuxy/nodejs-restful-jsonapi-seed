@@ -26,7 +26,8 @@ commander
   .option('--lint',   'Run ESLint on project sources')
   .option('--test',   'Run Mocha integration tests')
   .option('--docker', 'Deploy your application as a Docker service')
-  .option('--gendoc', 'Generate documentation using ESDoc')
+  .option('--genapi', 'Generate Swagger definitions')
+  .option('--gendoc', 'Generate documentation using JSDoc')
   .option('--env <environment>', 'Set the NODE_ENV (default: development)')
   /* eslint-enable max-len */
 

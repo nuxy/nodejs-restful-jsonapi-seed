@@ -46,6 +46,7 @@ Install the command-line utility using [NPM](https://npmjs.com).
       --lint                   Run ESLint on project sources
       --test                   Run Mocha integration tests
       --docker                 Deploy your application as a Docker service
+      --genapi                 Generate Swagger definitions
       --gendoc                 Generate documentation using JSDoc
       --env <environment>      Set the NODE_ENV (default: development)
       -h, --help               output usage information
