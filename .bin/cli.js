@@ -68,6 +68,10 @@ switch (true) {
     runCommand('docker');
     break;
 
+  case !!commander.genapi:
+    runCommand('genapi');
+    break;
+
   case !!commander.gendoc:
     runCommand('gendoc');
     break;
