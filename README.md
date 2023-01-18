@@ -159,6 +159,10 @@ You can update the [database wrapper](https://github.com/nuxy/nodejs-restful-jso
 
 This package has limited support for Windows due to cross-platform compatibility issues, most notably `SHELL` environment differences. Due to this, you can either run this package in [Docker](https://docker.com) or switch to a UNIX-like operating system.
 
+## Future updates
+
+As of Node.js [v15.3.0](https://nodejs.org/es/blog/release/v15.3.0) native ES module support is [no longer experimental](https://github.com/nodejs/node/pull/35781).  Due to this, the usage of a transpiler will be removed.  Doing so greatly simplifies this package (less dependencies) while also eliminating the build transpilation process.  So, unless you are using a Babel extension that is **outside the scope of what this package provides**, or are bound to a Node.js version that is _&lt; v15.3.0_, you should NOT be impacted by these changes.
+
 ## Contributions
 
 If you fix a bug, or have a code you want to contribute, please send a pull-request with your changes. (Note: Before committing your code please ensure that you are following the [Node.js style guide](https://github.com/felixge/node-style-guide))
