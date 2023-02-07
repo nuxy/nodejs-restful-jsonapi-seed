@@ -7,7 +7,7 @@
     "build": "node_modules/.bin/babel src -s -D -d dist",
     "deploy": "node_modules/.bin/pm2 start dist/app.js -i max --no-daemon",
     "docker": "docker build -t app . --build-arg NODE_ENV=${NODE_ENV:-development} --no-cache && docker run -d -p3000:3000 app",
-    "genapi": "swagger-jsdoc -d src/swagger.js -o swagger.json src/routes/**.js",
+    "genapi": "swagger-jsdoc -d src/swagger.js -o swagger.json 'src/routes/**/*.js'",
     "gendoc": "node_modules/.bin/jsdoc -d doc -r src",
     "lint": "node_modules/.bin/eslint --ignore-path .gitignore src test",
     "start": "node dist/app.js",
