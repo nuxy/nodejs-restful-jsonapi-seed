@@ -1,9 +1,9 @@
 module.exports = {
   swagger: '2.0',
   info: {
-    title: 'nodejs-restful-jsonapi-seed',
-    description: 'Everything you need to start building a scalable web application.',
-    version: '1.9.0',
+    title: process.env.npm_package_name,
+    description: process.env.npm_package_description,
+    version: process.env.npm_package_version
   },
   host: 'localhost:3000',
   basePath: '/',
