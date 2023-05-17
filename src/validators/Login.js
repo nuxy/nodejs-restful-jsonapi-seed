@@ -3,7 +3,7 @@
 import {checkSchema} from 'express-validator';
 
 // Local modules.
-import validatorResult from '~/middleware/ValidatorResult.js';
+import validatorResult from '../middleware/ValidatorResult.js';
 
 /**
  * Validator schema.

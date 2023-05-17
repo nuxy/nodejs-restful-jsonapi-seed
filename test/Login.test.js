@@ -12,7 +12,7 @@ describe('Login', function() {
   /**
    * Include shared behaviors.
    */
-  require('./Login.setup');
+  import('./Login.setup');
 
   /**
    * Execute before test.

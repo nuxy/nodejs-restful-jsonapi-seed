@@ -1,27 +1,25 @@
-'use strict';
-
-import config       from 'config';
-import cors         from 'cors';
-import express      from 'express';
-import fileUpload   from 'express-fileupload';
-import session      from 'express-session';
-import {v4 as uuid} from 'uuid';
+import config         from 'config';
+import cors           from 'cors';
+import express        from 'express';
+import fileUpload     from 'express-fileupload';
+import session        from 'express-session';
+import {readFileSync} from 'fs';
+import swaggerUi      from 'swagger-ui-express';
+import {v4 as uuid}   from 'uuid';
 
 // Local modules.
-import Database     from '~/lib/Database.js';
-import Logger       from '~/lib/Logger.js';
-import SessionStore from '~/lib/SessionStore.js';
-import SSL          from '~/lib/SSL.js';
-import Routes       from '~/routes';
+import Database     from './lib/Database.js';
+import Logger       from './lib/Logger.js';
+import SessionStore from './lib/SessionStore.js';
+import SSL          from './lib/SSL.js';
+import Routes       from './routes/index.js';
 
-// Swagger examples.
-import swaggerUi   from 'swagger-ui-express';
-import swaggerJson from '~/../swagger.json';
+// Swagger example.
+const swaggerJson = JSON.parse(readFileSync('swagger.json'));
 
 // Init Express.
 const app = express();
-
-app.server = createServer(app);
+app.server = await createServer(app);
 
 // Server options.
 app.use(express.json({
@@ -116,7 +114,7 @@ Database(db => {
  *
  * @return {Function}
  */
-function createServer(requestListener) {
+async function createServer(requestListener) {
   const sslEnable = config.get('server.http.ssl.enable');
   const version   = config.get('server.http.version');
 
@@ -132,7 +130,7 @@ function createServer(requestListener) {
   if (version === 2 && sslEnable) {
     console.log(`${protocol} ${status}`);
 
-    return require('http2').createSecureServer(
+    return (await import('https')).createSecureServer(
       options, requestListener
     );
   }
@@ -141,13 +139,13 @@ function createServer(requestListener) {
     if (sslEnable) {
       console.log(`${protocol} SSL ${status}`);
 
-      return require('https').createServer(
+      return (await import('https')).createServer(
         options, requestListener
       );
     } else {
       console.log(`${protocol} ${status}`);
 
-      return require('http').createServer(
+      return (await import('http')).createServer(
         requestListener
       );
     }

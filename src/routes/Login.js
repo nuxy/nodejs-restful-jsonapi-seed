@@ -1,9 +1,9 @@
 'use strict';
 
 // Local modules.
-import resourceRouter from '~/middleware/ResourceRouter.js';
-import loginResource  from '~/resources/Login.js';
-import {validate}     from '~/validators/Login.js';
+import resourceRouter from '../middleware/ResourceRouter.js';
+import loginResource  from '../resources/Login.js';
+import {validate}     from '../validators/Login.js';
 
 /**
  * @export default

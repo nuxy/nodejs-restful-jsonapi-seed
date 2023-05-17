@@ -39,9 +39,8 @@ Install the command-line utility using [NPM](https://npmjs.com).
 
     Options:
       --create <project-name>  Create a new seed example project
-      --build                  Transpile ES6 sources (using Babel) to a distribution
-      --start                  Launch a single server instance from a transpiled distribution
-      --deploy                 Launch a server cluster from a transpiled distribution
+      --start                  Launch a single server instance
+      --deploy                 Launch a server cluster
       --watch                  Launch the server (development mode)
       --lint                   Run ESLint on project sources
       --test                   Run Mocha integration tests
@@ -71,15 +70,11 @@ Set your environment. If `NODE_ENV` is not defined, the default config `developm
 
     $ export NODE_ENV=<production|staging|qa>
 
-Transpile ES6 sources (using [Babel](https://babeljs.io)) to a distribution:
-
-    $ npm run build
-
-Launch a _single server instance_ from a transpiled distribution:
+Launch a _single server instance_:
 
     $ npm run start
 
-Launch a _server cluster_ from a transpiled distribution:
+Launch a _server cluster_:
 
     $ npm run deploy
 
@@ -147,10 +142,6 @@ I wanted a package that was lightweight and provided all of the Production featu
 
 This package provides _everything_ you need to quickly build your application using a consistent and secure set of standards.
 
-> Why use Babel, and not TypeScript?
-
-If you are using [JSDoc tags](https://jsdoc.app/about-block-inline-tags.html) and an IDE/Editor that supports Intellisense (code completion and typing).  Complexity like this is not necessary.
-
 > How do you set-up this package to use a custom database?
 
 You can update the [database wrapper](https://github.com/nuxy/nodejs-restful-jsonapi-seed/blob/master/src/lib/Database.js) example to use any [DBMS](https://www.npmjs.com/search?q=dbms) package available while  extending the application [SessionStore](https://github.com/nuxy/nodejs-restful-jsonapi-seed/blob/master/src/lib/SessionStore.js) to use a compatible [Connection Session Store](https://github.com/expressjs/session#compatible-session-stores) module.
@@ -158,10 +149,6 @@ You can update the [database wrapper](https://github.com/nuxy/nodejs-restful-jso
 ## Windows support
 
 This package has limited support for Windows due to cross-platform compatibility issues, most notably `SHELL` environment differences. Due to this, you can either run this package in [Docker](https://docker.com) or switch to a UNIX-like operating system.
-
-## Future updates
-
-As of Node.js [v15.3.0](https://nodejs.org/es/blog/release/v15.3.0) native ES module support is [no longer experimental](https://github.com/nodejs/node/pull/35781).  Due to this, the usage of a transpiler will be removed.  Doing so greatly simplifies this package (less dependencies) while also eliminating the build transpilation process.  So, unless you are using a Babel extension that is **outside the scope of what this package provides**, or are bound to a Node.js version that is _&lt; v15.3.0_, you should NOT be impacted by these changes.
 
 ## Contributions
 

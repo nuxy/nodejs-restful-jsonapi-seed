@@ -1,16 +1,16 @@
 'use strict';
 
 import {Router} from 'express';
-import {Glob}   from 'glob';
+import Glob     from 'glob';
 import path     from 'path';
 
 // Local modules.
-import accessControlManager  from '~/middleware/AccessControlManager.js';
-import contentNegotiation    from '~/middleware/ContentNegotiation.js';
-import contentTypeHeader     from '~/middleware/ContentTypeHeader.js';
-import packageVersionHeader  from '~/middleware/PackageVersionHeader.js';
-import poweredByHeader       from '~/middleware/PoweredByHeader.js';
-import sparseFieldsetsParser from '~/middleware/SparseFieldsetsParser.js';
+import accessControlManager  from '../middleware/AccessControlManager.js';
+import contentNegotiation    from '../middleware/ContentNegotiation.js';
+import contentTypeHeader     from '../middleware/ContentTypeHeader.js';
+import packageVersionHeader  from '../middleware/PackageVersionHeader.js';
+import poweredByHeader       from '../middleware/PoweredByHeader.js';
+import sparseFieldsetsParser from '../middleware/SparseFieldsetsParser.js';
 
 /**
  * @export default
@@ -32,18 +32,22 @@ export default ({config, db}) => {
   const app = {config, db};
 
   // Enable configured routes.
-  const baseDir = './dist/routes';
+  const baseDir = './src/routes';
 
   new Glob('**/*.js', {cwd: baseDir, ignore: '**/index.js'}, (err, files) => {
     if (err) {
       throw new Error(`Routing config: ${err.message}`);
     }
 
-    files.forEach(file => {
-      const name  = path.parse(file).name;
-      const route = require(`~/routes/${name}`).default(app);
+    files.forEach(function(file) {
+      const name = path.parse(file).name;
 
-      router.use(`/${name}`, route);
+      import(`./${name}\.js`)
+        .then(function(func) {
+          const route = func.default(app);
+
+          router.use(`/${name}`, route);
+        });
     });
   });
 

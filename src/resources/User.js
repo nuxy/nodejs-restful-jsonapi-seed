@@ -1,7 +1,7 @@
 'use strict';
 
 // Local modules.
-import random from '~/lib/Random.js';
+import random from '../lib/Random.js';
 
 /**
  * Router resource example.

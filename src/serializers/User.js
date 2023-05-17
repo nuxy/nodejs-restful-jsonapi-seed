@@ -3,7 +3,7 @@
 import {Serializer} from 'jsonapi-serializer';
 
 // Local modules.
-import errorHandler from '~/serializers/ErrorHandler.js';
+import errorHandler from '../serializers/ErrorHandler.js';
 
 /**
  * @export default {Object}

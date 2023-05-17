@@ -1,10 +1,10 @@
 'use strict';
 
 // Local modules.
-import resourceRouter from '~/middleware/ResourceRouter.js';
-import userResource   from '~/resources/User.js';
-import serializer     from '~/serializers/User.js';
-import {validate}     from '~/validators/User.js';
+import resourceRouter from '../middleware/ResourceRouter.js';
+import userResource   from '../resources/User.js';
+import serializer     from '../serializers/User.js';
+import {validate}     from '../validators/User.js';
 
 /**
  * @export default

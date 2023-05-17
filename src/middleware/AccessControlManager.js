@@ -5,7 +5,7 @@ import config          from 'config';
 import deepCopy        from 'deep-copy';
 
 // Local modules.
-import utils from '~/lib/Utils.js';
+import utils from '../lib/Utils.js';
 
 // Configuration.
 const excludePaths  = deepCopy(config.get('router.accessControl.excludePaths'));

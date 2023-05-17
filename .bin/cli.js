@@ -2,10 +2,10 @@
 
 'use strict';
 
-const commander = require('commander');
-const copyDir   = require('copy-dir');
-const execSync  = require('child_process').execSync;
-const fs        = require('fs');
+import commander  from 'commander';
+import copyDir    from 'copy-dir';
+import {execSync} from 'child_process';
+import fs         from 'fs';
 
 // Get global module $PATH
 const NODE_MODULES = execSync('npm root -g').toString().trim();
@@ -19,9 +19,8 @@ commander
 
   /* eslint-disable max-len */
   .option('--create <project-name>', 'Create a new seed example project', /^[\w-]+$/g)
-  .option('--build',  'Transpile ES6 sources (using Babel) to a distribution')
-  .option('--start',  'Launch a single server instance from a transpiled distribution')
-  .option('--deploy', 'Launch a server cluster from a transpiled distribution')
+  .option('--start',  'Launch a single server instance')
+  .option('--deploy', 'Launch a server cluster')
   .option('--watch',  'Launch the server (development mode)')
   .option('--lint',   'Run ESLint on project sources')
   .option('--test',   'Run Mocha integration tests')
@@ -38,10 +37,6 @@ const NODE_CONFIG_ENV = commander.env || 'development';
 switch (true) {
   case !!commander.create:
     createProject(commander.create);
-    break;
-
-  case !!commander.build:
-    runCommand('build');
     break;
 
   case !!commander.start:
@@ -122,6 +117,7 @@ function createProject(name) {
 
   const withProps = [
     'name',
+    'type',
     'version',
     'description',
     'main',

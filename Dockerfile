@@ -15,7 +15,7 @@ RUN mkdir -p config .
 COPY config/default.json config
 COPY config/${env}.json config
 
-ADD dist dist
+ADD src src
 
 RUN groupadd -r app && useradd -r -g app -m app
 

@@ -1,6 +1,6 @@
 'use strict';
 
-import {Error} from 'jsonapi-serializer';
+import Error from 'jsonapi-serializer';
 
 /**
  * @export default {Function}

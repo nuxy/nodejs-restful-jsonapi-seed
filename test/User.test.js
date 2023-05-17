@@ -15,8 +15,8 @@ describe('User', function() {
   /**
    * Include shared behaviors.
    */
-  require('./Login.setup');
-  require('./User.setup');
+  import('./Login.setup');
+  import('./User.setup');
 
   /**
    * Execute before test.

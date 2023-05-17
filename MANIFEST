@@ -1,5 +1,4 @@
 nodejs-restful-jsonapi-seed
-.babelrc
 .dockerignore
 .eslintrc
 .gitignore
@@ -43,6 +42,8 @@ src/validators/examples/Login.js
 src/validators/examples/User.js
 swagger.json
 test
+test/examples/App.setup.js
+test/examples/App.test.js
 test/examples/Login.setup.js
 test/examples/Login.test.js
 test/examples/User.setup.js
