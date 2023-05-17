@@ -1,5 +1,3 @@
-'use strict';
-
 import {Serializer} from 'jsonapi-serializer';
 
 // Local modules.

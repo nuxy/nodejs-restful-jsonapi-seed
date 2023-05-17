@@ -1,5 +1,3 @@
-'use strict';
-
 import {validationResult} from 'express-validator';
 
 // Local modules.

@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Example of a database handle wrapper.
  *

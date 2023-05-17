@@ -1,5 +1,3 @@
-'use strict';
-
 import Error from 'jsonapi-serializer';
 
 /**

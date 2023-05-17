@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Middleware to handle JSON API content negotiation responsibilities.
  *

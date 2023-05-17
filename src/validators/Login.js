@@ -1,5 +1,3 @@
-'use strict';
-
 import {checkSchema} from 'express-validator';
 
 // Local modules.

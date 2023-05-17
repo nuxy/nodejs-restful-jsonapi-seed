@@ -1,5 +1,3 @@
-'use strict';
-
 // Local modules.
 import resourceRouter from '../middleware/ResourceRouter.js';
 import userResource   from '../resources/User.js';

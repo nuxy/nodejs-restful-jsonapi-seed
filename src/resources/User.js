@@ -1,5 +1,3 @@
-'use strict';
-
 // Local modules.
 import random from '../lib/Random.js';
 

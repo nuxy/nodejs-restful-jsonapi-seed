@@ -1,5 +1,3 @@
-'use strict';
-
 import memoryStore from 'memorystore';
 
 /**

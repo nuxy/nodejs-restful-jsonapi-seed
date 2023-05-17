@@ -1,5 +1,3 @@
-'use strict';
-
 import shared from 'mocha-shared';
 
 // Local modules.

@@ -1,5 +1,3 @@
-'use strict';
-
 import {AccessControl} from 'accesscontrol';
 import config          from 'config';
 import deepCopy        from 'deep-copy';

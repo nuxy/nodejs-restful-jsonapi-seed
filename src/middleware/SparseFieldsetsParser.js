@@ -1,5 +1,3 @@
-'use strict';
-
 import QueryParser from 'jsonapi-query-parser';
 
 /**

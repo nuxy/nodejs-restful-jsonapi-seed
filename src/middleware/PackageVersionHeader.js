@@ -1,5 +1,3 @@
-'use strict';
-
 /**
  * Middleware to send the package.json version as header.
  *
