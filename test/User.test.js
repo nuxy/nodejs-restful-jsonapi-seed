@@ -1,8 +1,10 @@
 import chai   from 'chai';
 import shared from 'mocha-shared';
 
+const expect = chai.expect;
+
 // Local modules.
-import random from '~/lib/Random.js';
+import random from '../src/lib/Random.js';
 
 /**
  * User service integration test.
@@ -13,22 +15,22 @@ describe('User', function() {
   /**
    * Include shared behaviors.
    */
-  import('./Login.setup');
-  import('./User.setup');
+  before(async function() {
+    await import('./App.setup.js');
+    await import('./Login.setup.js');
+    await import('./User.setup.js');
 
-  /**
-   * Execute before test.
-   */
-  shared.setup('LoginSetup');
-  shared.setup('UserSetup');
+    shared.setup('AppSetup');
+    shared.setup('LoginSetup');
+    shared.setup('UserSetup');
+  });
 
   /**
    * Start test suite.
    */
   describe('Create a new user', function() {
-    it('returns no errors', function(done) {
-      chai.expect(this.user) .to.be.an('object');
-      done();
+    it('returns no errors', function() {
+      expect(this.user).to.be.an('object');
     });
   });
 
@@ -36,10 +38,10 @@ describe('User', function() {
     it('returns no errors', function(done) {
       this.request.get('/user')
         .end(function(err, res) {
-          chai.expect(res.statusCode)        .to.equal(200);
-          chai.expect(res.body)              .to.have.a.property('data');
-          chai.expect(res.body.data)         .to.be.an('array');
-          chai.expect(res.body.data[0].type) .to.equal('users');
+          expect(res.statusCode)        .to.equal(200);
+          expect(res.body)              .to.have.a.property('data');
+          expect(res.body.data)         .to.be.an('array');
+          expect(res.body.data[0].type) .to.equal('users');
           done();
         });
     });
@@ -49,10 +51,10 @@ describe('User', function() {
     it('returns no errors', function(done) {
       this.request.get(`/user/${this.user.id}`)
         .end(function(err, res) {
-          chai.expect(res.statusCode)     .to.equal(200);
-          chai.expect(res.body)           .to.have.a.property('data');
-          chai.expect(res.body.data)      .to.be.an('object');
-          chai.expect(res.body.data.type) .to.equal('users');
+          expect(res.statusCode)     .to.equal(200);
+          expect(res.body)           .to.have.a.property('data');
+          expect(res.body.data)      .to.be.an('object');
+          expect(res.body.data.type) .to.equal('users');
           done();
         });
     });
@@ -68,7 +70,7 @@ describe('User', function() {
           gender: random.gender()
         })
         .end(function(err, res) {
-          chai.expect(res.statusCode) .to.equal(204);
+          expect(res.statusCode) .to.equal(204);
           done();
         });
     });
@@ -79,7 +81,7 @@ describe('User', function() {
       this.request.delete(`/user/${this.user.id}`)
         .set('Content-Type', 'application/vnd.api+json')
         .end(function(err, res) {
-          chai.expect(res.statusCode) .to.equal(204);
+          expect(res.statusCode) .to.equal(204);
           done();
         });
     });

@@ -4,9 +4,9 @@ import shared from 'mocha-shared';
 const expect = chai.expect;
 
 /**
- * Login service integration test.
+ * App integration test.
  */
-describe('Login', function() {
+describe('App', function() {
   this.timeout(1000);
 
   /**
@@ -14,20 +14,16 @@ describe('Login', function() {
    */
   before(async function() {
     await import('./App.setup.js');
-    await import('./Login.setup.js');
 
     shared.setup('AppSetup');
-    shared.setup('LoginSetup');
   });
 
   /**
    * Start test suite.
    */
-  describe('Create a new session', function() {
+  describe('Create a request agent', function() {
     it('returns no errors', function() {
-      console.log('SESSION', this.session);
-
-      expect(this.session).to.be.true;
+      expect(this.request).to.be.an('object');
     });;
   });
 });

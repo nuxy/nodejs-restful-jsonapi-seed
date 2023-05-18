@@ -1,7 +1,7 @@
 import shared from 'mocha-shared';
 
 // Local modules.
-import random from '~/lib/Random.js';
+import random from '../src/lib/Random.js';
 
 /**
  * Shared behaviors.
@@ -22,6 +22,7 @@ shared.setup('UserSetup', function() {
         if (res.statusCode === 201) {
           this.user = res.body.data;
         }
+
         done();
       });
   });
