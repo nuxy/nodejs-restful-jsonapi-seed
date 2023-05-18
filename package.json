@@ -12,7 +12,7 @@
     "lint": "eslint --ignore-path .gitignore src test",
     "start": "node src/app.js",
     "test": "mocha 'test/**/*.test.js' --require test/mocha.env.js --exit",
-    "watch": "nodemon -w src --exec \"npm run build ; npm run start\""
+    "watch": "nodemon -w src --exec \"npm run start\""
   },
   "repository": {
     "type": "git",
