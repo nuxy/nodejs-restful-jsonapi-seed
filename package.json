@@ -1,6 +1,6 @@
 {
   "name": "nodejs-restful-jsonapi-seed",
-  "version": "1.10.2",
+  "version": "2.0.0",
   "description": "Everything you need to start building a scalable web application.",
   "main": "src/app.js",
   "type": "module",
