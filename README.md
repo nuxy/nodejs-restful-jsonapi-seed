@@ -8,7 +8,7 @@ Everything you need to start building a scalable web application.
 
 ## Features
 
-- ECMAScript 2015 (ES6) compatible.
+- ECMAScript 2022 (ES6) compatible.
 - RESTful application interface.
 - JSON API standard request/responses.
 - ABAC (Attribute-Based Access Control)
