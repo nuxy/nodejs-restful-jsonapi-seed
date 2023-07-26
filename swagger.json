@@ -3,7 +3,7 @@
   "info": {
     "title": "nodejs-restful-jsonapi-seed",
     "description": "Everything you need to start building a scalable web application.",
-    "version": "2.0.0"
+    "version": "2.0.1"
   },
   "host": "localhost:3000",
   "basePath": "/",

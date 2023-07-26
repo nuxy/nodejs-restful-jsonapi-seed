@@ -12,3 +12,7 @@ The following items are **breaking changes** and not supported in prior releases
 
 - Removed Babel transpilation process
 - Refactored ESM import paths/require
+
+## [2.0.1] - 2023-07-26
+
+NPM security update ([CVE-2023-37466](https://github.com/advisories/GHSA-cchq-frgv-rjh5))
