@@ -16,3 +16,7 @@ The following items are **breaking changes** and not supported in prior releases
 ## [2.0.1] - 2023-07-26
 
 NPM security update ([CVE-2023-37466](https://github.com/advisories/GHSA-cchq-frgv-rjh5))
+
+## [2.0.2] - 2023-10-03
+
+NPM security update ([CVE-2022-25883](https://github.com/advisories/GHSA-c2qf-rxjj-qqgw)
