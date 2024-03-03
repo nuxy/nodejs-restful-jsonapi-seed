@@ -1,6 +1,6 @@
 # Node.js Express restful JSON API seed
 
-[![npm version](https://badge.fury.io/js/nodejs-restful-jsonapi-seed.svg)](https://badge.fury.io/js/nodejs-restful-jsonapi-seed) [![](https://img.shields.io/npm/dm/nodejs-restful-jsonapi-seed.svg)](https://www.npmjs.com/package/nodejs-restful-jsonapi-seed) [![Build Status](https://api.travis-ci.com/nuxy/nodejs-restful-jsonapi-seed.svg?branch=master)](https://app.travis-ci.com/github/nuxy/nodejs-restful-jsonapi-seed) [![](https://img.shields.io/github/v/release/nuxy/nodejs-restful-jsonapi-seed)](https://github.com/nuxy/nodejs-restful-jsonapi-seed/releases)
+[![npm version](https://badge.fury.io/js/nodejs-restful-jsonapi-seed.svg)](https://badge.fury.io/js/nodejs-restful-jsonapi-seed) [![](https://img.shields.io/npm/dm/nodejs-restful-jsonapi-seed.svg)](https://www.npmjs.com/package/nodejs-restful-jsonapi-seed) [![Build Status](https://img.shields.io/github/actions/workflow/status/nuxy/nodejs-restful-jsonapi-seed/.github%2Fworkflows%2Fci.yml)](https://app.travis-ci.com/github/nuxy/nodejs-restful-jsonapi-seed) [![](https://img.shields.io/github/v/release/nuxy/nodejs-restful-jsonapi-seed)](https://github.com/nuxy/nodejs-restful-jsonapi-seed/releases)
 
 Everything you need to start building a scalable web application.
 
