@@ -30,3 +30,9 @@ NPM security update ([CVE-2023-26159](https://github.com/advisories/GHSA-jchw-25
 NPM security update ([CVE-2024-28849](https://github.com/advisories/GHSA-cxjh-pqwp-8mfp))
 
 - Upgraded outdated NPM packages
+
+## [2.0.5] - 2024-07-21
+
+NPM security update ([CVE-2024-37890](https://github.com/advisories/GHSA-3h5v-q93c-6h6q))
+
+- Upgraded outdated NPM packages
