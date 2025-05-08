@@ -40,3 +40,8 @@ NPM security update ([CVE-2024-37890](https://github.com/advisories/GHSA-3h5v-q9
 ## [2.0.6] - 2024-10-11
 
 NPM security update ([CVE-2024-43799](https://github.com/advisories/GHSA-m6fv-jmcg-4jfg))
+
+## [2.0.7] - 2025-05-08
+
+- NPM security update ([CVE-2024-11831](https://github.com/advisories/GHSA-76p7-773f-r4q5))
+- Upgraded Mocha NPM package (11.2.2)
