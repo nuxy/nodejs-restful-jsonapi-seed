@@ -18,7 +18,6 @@ const rolesByWeight = deepCopy(config.get('router.accessControl.rolesByWeight'))
  * @export default {Function}
  */
 
-// eslint-disable-next-line max-statements
 export default ({method, path, session}, res, next) => {
 
   // Skip public routes.
