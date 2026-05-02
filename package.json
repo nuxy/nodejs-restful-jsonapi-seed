@@ -64,6 +64,11 @@
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1"
   },
+  "overrides": {
+    "mocha": {
+      "serialize-javascript": "7.0.4"
+    }
+  },
   "engines": {
     "node": ">=18.0.0"
   },
