@@ -3,15 +3,14 @@
   "version": "2.0.8",
   "description": "Everything you need to start building a scalable web application.",
   "main": "src/app.js",
-  "type": "module",
   "scripts": {
     "deploy": "pm2 start src/app.js -i max --no-daemon",
     "docker": "docker build -t app . --build-arg NODE_ENV=${NODE_ENV:-development} --no-cache && docker run -d -p3000:3000 app",
     "genapi": "swagger-jsdoc -d src/swagger.js -o swagger.json 'src/routes/**/*.js'",
     "gendoc": "jsdoc -d doc -r src",
-    "lint": "eslint --ignore-path .gitignore src test",
+    "lint": "eslint src test",
     "start": "node src/app.js",
-    "test": "mocha 'test/**/*.test.js' --require test/mocha.env.js --exit",
+    "test": "mocha test/**/*.test.js --require test/mocha.env.js --exit",
     "watch": "nodemon -w src --exec \"npm run start\""
   },
   "repository": {
@@ -56,7 +55,7 @@
     "chai": "^4.5.0",
     "chai-http": "^4.4.0",
     "chance": "^1.1.13",
-    "eslint": "^8.57.1",
+    "eslint": "^10.0.3",
     "glob": "^7.2.3",
     "jsdoc": "^4.0.4",
     "mocha": "^11.7.1",
