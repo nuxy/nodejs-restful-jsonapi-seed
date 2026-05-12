@@ -47,7 +47,7 @@
     "jsonapi-serializer": "^3.6.9",
     "memorystore": "^1.6.8",
     "morgan": "^1.9.1",
-    "pm2": "^5.4.2",
+    "pm2": "^7.0.1",
     "rotating-file-stream": "^2.1.6",
     "swagger-doc": "^0.3.0",
     "uuid": "^9.0.1"
