@@ -56,3 +56,7 @@ NPM security update ([CVE-2024-43799](https://github.com/advisories/GHSA-m6fv-jm
 - Override serialize-javascript (see mochajs/mocha#5781)
 - Replaced ESLint deprecated release
 - Upgraded outdated NPM packages
+
+## [2.1.0] - 2026-05-13
+
+- Upgraded PM2 to latest release (7.0.1)
