@@ -62,3 +62,10 @@ NPM security update ([CVE-2025-7783](https://github.com/advisories/GHSA-fjxv-7rq
 ## [2.1.0] - 2026-05-13
 
 - Upgraded PM2 to latest release (7.0.1)
+
+## [2.1.1] - 2026-06-23
+
+NPM security updates ([CVE-2026-44724](https://github.com/advisories/GHSA-hvx9-hwr7-wjj9))/([CVE-2026-48779](https://github.com/advisories/GHSA-96hv-2xvq-fx4p))
+
+- Fixed Swagger import ESM incompatibility
+- Upgraded outdated NPM packages
