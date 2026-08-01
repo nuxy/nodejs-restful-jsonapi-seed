@@ -65,7 +65,11 @@ NPM security update ([CVE-2025-7783](https://github.com/advisories/GHSA-fjxv-7rq
 
 ## [2.1.1] - 2026-06-23
 
-NPM security updates ([CVE-2026-44724](https://github.com/advisories/GHSA-hvx9-hwr7-wjj9))/([CVE-2026-48779](https://github.com/advisories/GHSA-96hv-2xvq-fx4p))
+- NPM security updates ([CVE-2026-44724](https://github.com/advisories/GHSA-hvx9-hwr7-wjj9))/([CVE-2026-48779](https://github.com/advisories/GHSA-96hv-2xvq-fx4p))
 
 - Fixed Swagger import ESM incompatibility
 - Upgraded outdated NPM packages
+
+## [2.1.2] - 2026-07-31
+
+- NPM security updates ([CVE-2026-41907](https://github.com/advisories/GHSA-w5hq-g745-h8pq))
