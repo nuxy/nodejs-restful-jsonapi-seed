@@ -77,3 +77,8 @@ NPM security update ([CVE-2025-7783](https://github.com/advisories/GHSA-fjxv-7rq
 ## [2.1.3] - 2026-07-31
 
 - Upgraded ESLint to latest release
+
+## [2.1.4] - 2026-09-10
+
+- Upgraded outdated NPM packages
+- NPM security updates
